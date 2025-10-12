@@ -11,7 +11,7 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 - **Frontend:** HTML5, CSS3, vanilla JavaScript  
 - **Backend:** Node.js, Express, EJS templates  
-- **Data:** local mock JSON (MongoDB-ready structure)  
+- **Data:** Local mock JSON (MongoDB-ready structure)  
 - **Styling:** Bootstrap 5  
 - **Versioning:** Git & GitHub  
 
@@ -23,7 +23,7 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 - ✅ Server-rendered pages using **EJS**  
 - ✅ Client + server validation for forms  
 - ✅ Clean, responsive layout  
-- ✅ URL structure and routes that mirror REST  
+- ✅ REST-like URL structure and routes  
 - ✅ Mock data for quick local demo (swap-in DB later)  
 
 ---
@@ -51,17 +51,22 @@ EventFlow/
 │  └─ layout.ejs
 ├─ server.js
 └─ package.json
-💻 Run Locally
 
-Clone the project and run it on your machine:# 1️⃣ Install dependencies
+---
+# Install dependencies
 npm install
 
-# 2️⃣ Start the server
+# Start the server
 npm start     # or: node server.js
+---
 Then open your browser and visit:
-👉 http://localhost:3000Current: Fully functional with mock data (local demo)
-Next: Add persistence (MongoDB), authentication, and filters
+👉 http://localhost:3000
+---
+📌 Status
 
+Current: Fully functional with mock data (local demo)
+Next: Add persistence (MongoDB), authentication, and filters
+---
 👤 Author
 
 Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change)
