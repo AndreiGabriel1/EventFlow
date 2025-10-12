@@ -74,7 +74,7 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 ```bash
 npm install
-npm start     # or: node server.js```
+npm start     # or: node server.js
 Then open: http://localhost:3000
 
 📌 Status
