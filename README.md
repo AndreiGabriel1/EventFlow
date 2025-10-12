@@ -51,8 +51,6 @@ EventFlow/
 ├─ server.js
 └─ package.json
 
-yaml
-Copiază codul
 
 ---
 
@@ -77,9 +75,9 @@ Copiază codul
 
 ## ▶️ Run Locally
 
-```bash```
+```bash
 npm install
-npm start     # or: node server.js
+npm start     # or: node server.js```
 Then open: http://localhost:3000
 
 📌 Status
