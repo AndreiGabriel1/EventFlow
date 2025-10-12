@@ -53,8 +53,6 @@ EventFlow/
 ├─ server.js
 └─ package.json
 
-yaml
-Copiază codul
 
 ---
 
