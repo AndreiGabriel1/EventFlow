@@ -11,7 +11,7 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 - **Frontend:** HTML5, CSS3, vanilla JavaScript  
 - **Backend:** Node.js, Express, EJS templates  
-- **Data:** Local mock JSON (MongoDB-ready structure)  
+- **Data:** local mock JSON (MongoDB-ready structure)  
 - **Styling:** Bootstrap 5  
 - **Versioning:** Git & GitHub  
 
@@ -36,57 +36,35 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 ## 🧩 Project Structure
 
+```text
 EventFlow/
-|-- data/
-| -- mock.json |-- public/ | |-- css/ | | -- app.css
-| -- img/ | -- mock.png
-|-- views/
-| |-- index.ejs
-| |-- event.ejs
-| -- layout.ejs |-- server.js -- package.json
+├─ data/
+│  └─ mock.json
+├─ public/
+│  ├─ css/
+│  │  └─ app.css
+│  └─ img/
+│     └─ mock.png
+├─ views/
+│  ├─ index.ejs
+│  ├─ event.ejs
+│  └─ layout.ejs
+├─ server.js
+└─ package.json
+💻 Run Locally
 
-yaml
-Copiază codul
-
----
-
-## 🧠 What I Practiced
-
-- Express routing & middleware  
-- Rendering dynamic pages with **EJS**  
-- Lightweight MVC organization  
-- Handling HTTP requests & basic validation  
-- Building a responsive UI with Bootstrap  
-
----
-
-## 🔮 Roadmap
-
-- Connect to **MongoDB Atlas** via Mongoose  
-- User authentication (Passport.js)  
-- Filters (by date/category) + pagination  
-- Real image uploads for events  
-
----
-
-## ▶️ Run Locally
-
-```bash
+Clone the project and run it on your machine:# 1️⃣ Install dependencies
 npm install
-npm start     # or: node server.js```
-# Then open:
-# http://localhost:3000
----
 
-## 📌 Status
+# 2️⃣ Start the server
+npm start     # or: node server.js
+Then open your browser and visit:
+👉 http://localhost:3000Current: Fully functional with mock data (local demo)
+Next: Add persistence (MongoDB), authentication, and filters
 
-- **Current:** Fully functional with mock data (local demo)  
-- **Next:** Persistence (MongoDB) + Auth + Filters  
+👤 Author
 
----
+Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change)
+GitHub: AndreiGabriel1
 
-## 👤 Author
-
-Built by **Andrei-Gabriel Dinu** — Entry-Level Web Developer (career change).  
-**GitHub:** [AndreiGabriel1](https://github.com/AndreiGabriel1)  
-**Email:** andrei.dinu.dev@gmail.com
+Email: andrei.dinu.dev@gmail.com
