@@ -35,6 +35,7 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 ---
 
 ## 🧩 Project Structure
+
 EventFlow/
 ├─ data/
 │ └─ mock.json
@@ -50,6 +51,8 @@ EventFlow/
 ├─ server.js
 └─ package.json
 
+yaml
+Copiază codul
 
 ---
 
@@ -77,6 +80,13 @@ EventFlow/
 ```bash
 npm install
 npm start     # or: node server.js
-
-
 Then open: http://localhost:3000
+
+📌 Status
+Current: fully functional with mock data, local demo
+
+Next: persistence (MongoDB) + auth + filters
+
+👤 Author
+Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change).
+GitHub: https://github.com/AndreiGabriel1 • Email: andrei.dinu.dev@gmail.com
