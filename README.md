@@ -31,4 +31,46 @@ Proiectul simulează un workflow complet: adăugare, afișare și editare de eve
 
 ---
 
-## 🧩 Structura proiectului
+## 🧩 Project Structure
+EventFlow/
+├── data/
+│ └── mock.json
+├── public/
+│ ├── css/
+│ │ └── app.css
+│ └── img/
+│ └── mock.png
+├── views/
+│ ├── index.ejs
+│ ├── event.ejs
+│ └── layout.ejs
+├── server.js
+└── package.json
+
+yaml
+Copiază codul
+
+---
+
+## 🧠 What I Practiced Here
+- Express routing & middleware
+- Server-rendered views with **EJS**
+- Lightweight MVC structuring
+- Handling forms & basic validation
+- Clean, responsive UI with Bootstrap
+
+---
+
+## 🔮 Roadmap
+- Connect to **MongoDB Atlas** (Mongoose models)
+- User authentication (Passport.js)
+- Filters: date/category, pagination
+- Real image uploads for events
+
+---
+
+## ▶️ Run Locally
+```bash
+npm install
+npm start   # or: node server.js
+Then open: http://localhost:3000
