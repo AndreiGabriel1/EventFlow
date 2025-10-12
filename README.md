@@ -52,6 +52,7 @@ EventFlow/
 ├─ server.js
 └─ package.json
 ```
+---
 💻 Run Locally
 
 Clone the project and run it on your machine:
@@ -62,9 +63,11 @@ npm install
 # 2️⃣ Start the server
 npm start     # or: node server.js
 ```
+---
 Then open your browser and visit:
 👉 http://localhost:3000Current: Fully functional with mock data (local demo)
 Next: Add persistence (MongoDB), authentication, and filters
+---
 
 👤 Author
 
