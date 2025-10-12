@@ -28,6 +28,8 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 ---
 
+---
+
 ## 📸 Preview
 
 ![Preview](public/img/mock.png)
@@ -36,37 +38,23 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 ## 🧩 Project Structure
 
-| Path | Description |
-|------|--------------|
-| `data/mock.json` | Mock data for events |
-| `public/css/app.css` | Custom styling |
-| `public/img/mock.png` | Preview image |
-| `views/` | EJS templates for pages |
-| `views/index.ejs` | Main page |
-| `views/event.ejs` | Single event page |
-| `views/layout.ejs` | Layout wrapper |
-| `server.js` | Express app entry |
-| `package.json` | Project dependencies |
+EventFlow/
+├─ data/
+│ └─ mock.json
+├─ public/
+│ ├─ css/
+│ │ └─ app.css
+│ └─ img/
+│ └─ mock.png
+├─ views/
+│ ├─ index.ejs
+│ ├─ event.ejs
+│ └─ layout.ejs
+├─ server.js
+└─ package.json
 
-
----
-
-## 🧠 What I Practiced
-
-- Express routing & middleware
-- Rendering dynamic pages with **EJS**
-- Lightweight MVC organization
-- Handling HTTP requests & basic validation
-- Building a responsive UI with Bootstrap
-
----
-
-## 🔮 Roadmap
-
-- Connect to **MongoDB Atlas** via Mongoose
-- User authentication (Passport.js)
-- Filters (by date/category) + pagination
-- Real image uploads for events
+yaml
+Copiază codul
 
 ---
 
@@ -77,11 +65,3 @@ npm install
 npm start     # or: node server.js
 Then open: http://localhost:3000
 
-📌 Status
-Current: fully functional with mock data, local demo
-
-Next: persistence (MongoDB) + auth + filters
-
-👤 Author
-Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change).
-GitHub: https://github.com/AndreiGabriel1 • Email: andrei.dinu.dev@gmail.com
