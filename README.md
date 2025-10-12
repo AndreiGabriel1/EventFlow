@@ -1,37 +1,34 @@
-# EventFlow
+# 🎟️ EventFlow
 
-> **Scop:** Aplicație de organizare a evenimentelor cu flux full-stack minimal și extensii realiste.
+**EventFlow** este o aplicație web simplă pentru organizarea și gestionarea evenimentelor — de la conferințe și workshopuri, până la petreceri private.  
+Proiectul simulează un workflow complet: adăugare, afișare și editare de evenimente, cu stocare mock locală și structură pregătită pentru conectarea la o bază de date reală.
 
-## 🧩 Stack
-- Node.js, Express, EJS, Bootstrap 5
-- (Pregătit) MongoDB via Mongoose
-- Extra: Passport.js (auth), Joi/Zod (validări), dotenv
+> Face parte din portofoliul meu ca **Entry-Level Web Developer** și reflectă atenția la structură, UX și cod lizibil.
 
-## ✅ Funcționalități
-**Core**
-- CRUD evenimente
-- Filtrare după dată/locație
-- UI responsive (Bootstrap 5)
+---
 
-**Plus (roadmap)**
-- Invitați per eveniment (status confirmat/nu)
-- Pagination + search (server-side)
+## ⚙️ Tehnologii utilizate
+- **Frontend:** HTML5, CSS3, JavaScript (vanilla)
+- **Backend:** Node.js, Express, EJS
+- **Stocare:** mock JSON (Mongo-ready)
+- **Framework CSS:** Bootstrap 5
+- **Versionare:** Git & GitHub
 
-## ▶️ Rulare locală
-```bash
-npm install
-npm run start
-# apoi deschide http://localhost:3000
-```
-> Pentru conectare MongoDB: creează un fișier `.env` cu `MONGODB_URI=...` și înlocuiește data layer-ul mock.
+---
 
-## 🖼️ Preview
-![Preview](/public/img/mock.png)
+## 🚀 Funcționalități principale
+✅ Adăugare / editare / ștergere evenimente  
+✅ Listare dinamică cu EJS templates  
+✅ Validare de formular (client-side + server-side)  
+✅ Pagină detaliată pentru fiecare eveniment  
+✅ Layout responsive, curat și modern  
+✅ Date simulate din fișier JSON pentru rulare rapidă  
 
-## 🧠 Ce am învățat
-- Structurarea rutelor și a view-urilor EJS
-- Design de date pentru evenimente & invitați
+---
 
-## ✍️ Author
-**Andrei‑Gabriel Dinu** — București  
-GitHub: https://github.com/AndreiGabriel1
+## 📸 Preview
+![Preview](public/img/mock.png)
+
+---
+
+## 🧩 Structura proiectului
