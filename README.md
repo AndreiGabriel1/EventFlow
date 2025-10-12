@@ -1,76 +1,38 @@
 # 🎟️ EventFlow
 
-**EventFlow** este o aplicație web simplă pentru organizarea și gestionarea evenimentelor — de la conferințe și workshopuri, până la petreceri private.  
-Proiectul simulează un workflow complet: adăugare, afișare și editare de evenimente, cu stocare mock locală și structură pregătită pentru conectarea la o bază de date reală.
+**EventFlow** is a lightweight web app to plan and manage events — meetups, workshops, or private parties.  
+It demonstrates a clean full-stack structure with server-rendered views, form handling, and a simple data layer that’s ready to be swapped with a real database.
 
-> Face parte din portofoliul meu ca **Entry-Level Web Developer** și reflectă atenția la structură, UX și cod lizibil.
-
----
-
-## ⚙️ Tehnologii utilizate
-- **Frontend:** HTML5, CSS3, JavaScript (vanilla)
-- **Backend:** Node.js, Express, EJS
-- **Stocare:** mock JSON (Mongo-ready)
-- **Framework CSS:** Bootstrap 5
-- **Versionare:** Git & GitHub
+> Portfolio project as part of my Web Developer journey. Focus on clarity, UX, and maintainable code.
 
 ---
 
-## 🚀 Funcționalități principale
-✅ Adăugare / editare / ștergere evenimente  
-✅ Listare dinamică cu EJS templates  
-✅ Validare de formular (client-side + server-side)  
-✅ Pagină detaliată pentru fiecare eveniment  
-✅ Layout responsive, curat și modern  
-✅ Date simulate din fișier JSON pentru rulare rapidă  
+## ⚙️ Tech Stack
+
+- **Frontend:** HTML5, CSS3, vanilla JavaScript
+- **Backend:** Node.js, Express, EJS templates
+- **Data:** local mock JSON (MongoDB-ready structure)
+- **Styling:** Bootstrap 5
+- **Versioning:** Git & GitHub
+
+---
+
+## 🚀 Features
+
+- ✅ Create / list / edit / delete events (CRUD)
+- ✅ Server-rendered pages using **EJS**
+- ✅ Client + server validation for forms
+- ✅ Clean, responsive layout
+- ✅ URL structure and routes that mirror REST
+- ✅ Mock data for quick local demo (swap-in DB later)
 
 ---
 
 ## 📸 Preview
+
 ![Preview](public/img/mock.png)
 
 ---
 
 ## 🧩 Project Structure
-EventFlow/
-├── data/
-│ └── mock.json
-├── public/
-│ ├── css/
-│ │ └── app.css
-│ └── img/
-│ └── mock.png
-├── views/
-│ ├── index.ejs
-│ ├── event.ejs
-│ └── layout.ejs
-├── server.js
-└── package.json
 
-yaml
-Copiază codul
-
----
-
-## 🧠 What I Practiced Here
-- Express routing & middleware
-- Server-rendered views with **EJS**
-- Lightweight MVC structuring
-- Handling forms & basic validation
-- Clean, responsive UI with Bootstrap
-
----
-
-## 🔮 Roadmap
-- Connect to **MongoDB Atlas** (Mongoose models)
-- User authentication (Passport.js)
-- Filters: date/category, pagination
-- Real image uploads for events
-
----
-
-## ▶️ Run Locally
-```bash
-npm install
-npm start   # or: node server.js
-Then open: http://localhost:3000
