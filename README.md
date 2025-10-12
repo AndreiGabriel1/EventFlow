@@ -71,6 +71,7 @@ EventFlow/
 
 ---
 
+```markdown
 ## 💻 Run Locally
 
 Clone the project and run it on your machine:
@@ -81,7 +82,6 @@ npm install
 
 # 2️⃣ Start the server
 npm start     # or: node server.js
-```
 Then open: http://localhost:3000
 
 📌 Status
@@ -89,9 +89,11 @@ Then open: http://localhost:3000
 Current: fully functional with mock data (local demo)
 Next: persistence (MongoDB) + authentication + filters
 
-👤 Author
+```markdown
+---
 
-Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change)
-GitHub: https://github.com/AndreiGabriel1
+## 👤 Author
 
-Email: andrei.dinu.dev@gmail.com
+Built by **Andrei-Gabriel Dinu** — Entry-Level Web Developer (career change)  
+GitHub: [https://github.com/AndreiGabriel1](https://github.com/AndreiGabriel1)  
+📧 **andrei.dinu.dev@gmail.com**
