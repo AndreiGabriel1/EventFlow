@@ -11,7 +11,7 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 - **Frontend:** HTML5, CSS3, vanilla JavaScript  
 - **Backend:** Node.js, Express, EJS templates  
-- **Data:** Local mock JSON (MongoDB-ready structure)  
+- **Data:** local mock JSON (MongoDB-ready structure)  
 - **Styling:** Bootstrap 5  
 - **Versioning:** Git & GitHub  
 
@@ -35,65 +35,64 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 ---
 
 ## 🧩 Project Structure
+
+```bash
 EventFlow/
 ├─ data/
-│ └─ mock.json
+│  └─ mock.json
 ├─ public/
-│ ├─ css/
-│ │ └─ app.css
-│ └─ img/
-│ └─ mock.png
+│  ├─ css/
+│  │  └─ app.css
+│  └─ img/
+│     └─ mock.png
 ├─ views/
-│ ├─ index.ejs
-│ ├─ event.ejs
-│ └─ layout.ejs
+│  ├─ index.ejs
+│  ├─ event.ejs
+│  └─ layout.ejs
 ├─ server.js
 └─ package.json
 
----
+🧠 What I Practiced
 
-## 🧠 What I Practiced
+Express routing & middleware
 
-- Express routing & middleware  
-- Rendering dynamic pages with **EJS**  
-- Lightweight MVC organization  
-- Handling HTTP requests & basic validation  
-- Building a responsive UI with Bootstrap  
+Rendering dynamic pages with EJS
 
----
+Lightweight MVC organization
 
-## 🔮 Roadmap
+Handling HTTP requests & basic validation
 
-- Connect to **MongoDB Atlas** via Mongoose  
-- User authentication (**Passport.js**)  
-- Filters (by date/category) + pagination  
-- Real image uploads for events  
+Building a responsive UI with Bootstrap
 
----
+🔮 Roadmap
 
-```markdown
-## 💻 Run Locally
+Connect to MongoDB Atlas via Mongoose
+
+User authentication (Passport.js)
+
+Filters (by date/category) + pagination
+
+Real image uploads for events
+
+💻 Run Locally
 
 Clone the project and run it on your machine:
-
-```bash
 # 1️⃣ Install dependencies
 npm install
 
 # 2️⃣ Start the server
 npm start     # or: node server.js
-Then open: http://localhost:3000
 
+Then open your browser and visit:
+👉 http://localhost:3000
 📌 Status
 
-Current: fully functional with mock data (local demo)
-Next: persistence (MongoDB) + authentication + filters
+Current: Fully functional with mock data (local demo)
+Next: Add persistence (MongoDB), authentication, and filters
 
-```markdown
----
+👤 Author
 
-## 👤 Author
+Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change)
+GitHub: https://github.com/AndreiGabriel1
 
-Built by **Andrei-Gabriel Dinu** — Entry-Level Web Developer (career change)  
-GitHub: [https://github.com/AndreiGabriel1](https://github.com/AndreiGabriel1)  
-📧 **andrei.dinu.dev@gmail.com**
+📧 andrei.dinu.dev@gmail.com
