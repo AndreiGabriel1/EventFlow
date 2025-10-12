@@ -23,7 +23,7 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 - ✅ Server-rendered pages using **EJS**  
 - ✅ Client + server validation for forms  
 - ✅ Clean, responsive layout  
-- ✅ RESTful routes  
+- ✅ URL structure and routes that mirror REST  
 - ✅ Mock data for quick local demo (swap-in DB later)  
 
 ---
@@ -36,64 +36,52 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 ## 🧩 Project Structure
 
-```bash
 EventFlow/
-├─ data/
-│  └─ mock.json
-├─ public/
-│  ├─ css/
-│  │  └─ app.css
-│  └─ img/
-│     └─ mock.png
-├─ views/
-│  ├─ index.ejs
-│  ├─ event.ejs
-│  └─ layout.ejs
-├─ server.js
-└─ package.json
+|-- data/
+| -- mock.json |-- public/ | |-- css/ | | -- app.css
+| -- img/ | -- mock.png
+|-- views/
+| |-- index.ejs
+| |-- event.ejs
+| -- layout.ejs |-- server.js -- package.json
 
-🧠 What I Practiced
+yaml
+Copiază codul
 
-Express routing & middleware
+---
 
-Rendering dynamic pages with EJS
+## 🧠 What I Practiced
 
-Lightweight MVC-style organization
+- Express routing & middleware  
+- Rendering dynamic pages with **EJS**  
+- Lightweight MVC organization  
+- Handling HTTP requests & basic validation  
+- Building a responsive UI with Bootstrap  
 
-Handling HTTP requests & validation
+---
 
-Building a responsive UI with Bootstrap
+## 🔮 Roadmap
 
-🔮 Roadmap
+- Connect to **MongoDB Atlas** via Mongoose  
+- User authentication (Passport.js)  
+- Filters (by date/category) + pagination  
+- Real image uploads for events  
 
-Connect to MongoDB Atlas via Mongoose
+---
 
-Add user authentication (Passport.js)
+## ▶️ Run Locally
 
-Implement filters (by date/category) + pagination
-
-Support real image uploads for events
-
-💻 Run Locally
-
-Clone the project and run it on your local machine:# 1️⃣ Install dependencies
+```bash
 npm install
-
-# 2️⃣ Start the server
-npm start
-# or:
-node server.js
-Then open your browser and go to:
-👉 http://localhost:3000
-
+npm start     # or: node server.js
+# Then open:
+# http://localhost:3000
 📌 Status
-
 Current: Fully functional with mock data (local demo)
-Next: Add persistence (MongoDB), authentication, and filters
+
+Next: Persistence (MongoDB) + Auth + Filters
 
 👤 Author
-
 Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change).
-📧 andrei.dinu.dev@gmail.com
-
-🌐 GitHub Profile
+GitHub: AndreiGabriel1
+Email: andrei.dinu.dev@gmail.com
