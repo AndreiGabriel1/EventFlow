@@ -71,12 +71,16 @@ EventFlow/
 
 ---
 
-## ▶️ Run Locally
+## 💻 Run Locally
+
+Clone the project and run it on your machine:
 
 ```bash
+# 1️⃣ Install dependencies
 npm install
+
+# 2️⃣ Start the server
 npm start     # or: node server.js
-```
 Then open: http://localhost:3000
 
 📌 Status
