@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "title": "Exemplu demo 1",
+      "info": "Aceasta este doar o intrare de test."
+    },
+    {
+      "title": "Exemplu demo 2",
+      "info": "Date mock înlocuibile cu MongoDB."
+    }
+  ]
+}

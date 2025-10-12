@@ -1,0 +1,8 @@
+:root{--bg:#0f172a;--card:#111827;--muted:#9ca3af;--fg:#e5e7eb}
+body{background:var(--bg);color:var(--fg);}
+.navbar{background:#0b1220!important}
+.card{background:var(--card);border:1px solid #1f2937}
+.form-control,.form-select{background:#0b1220;color:var(--fg);border-color:#1f2937}
+.table{color:var(--fg)}
+a{color:#93c5fd}
+footer{color:var(--muted)}
