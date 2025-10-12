@@ -36,20 +36,17 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 ## 🧩 Project Structure
 
-EventFlow/
-├─ data/
-│ └─ mock.json
-├─ public/
-│ ├─ css/
-│ │ └─ app.css
-│ └─ img/
-│ └─ mock.png
-├─ views/
-│ ├─ index.ejs
-│ ├─ event.ejs
-│ └─ layout.ejs
-├─ server.js
-└─ package.json
+| Path | Description |
+|------|--------------|
+| `data/mock.json` | Mock data for events |
+| `public/css/app.css` | Custom styling |
+| `public/img/mock.png` | Preview image |
+| `views/` | EJS templates for pages |
+| `views/index.ejs` | Main page |
+| `views/event.ejs` | Single event page |
+| `views/layout.ejs` | Layout wrapper |
+| `server.js` | Express app entry |
+| `package.json` | Project dependencies |
 
 
 ---
