@@ -77,7 +77,7 @@ Copiază codul
 
 ## ▶️ Run Locally
 
-```bash
+```bash```
 npm install
 npm start     # or: node server.js
 Then open: http://localhost:3000
