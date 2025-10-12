@@ -51,13 +51,16 @@ EventFlow/
 │  └─ layout.ejs
 ├─ server.js
 └─ package.json
+
 💻 Run Locally
 
-Clone the project and run it on your machine:# 1️⃣ Install dependencies
+Clone the project and run it on your machine:
+```bash
+# 1️⃣ Install dependencies
 npm install
 
 # 2️⃣ Start the server
-npm start     # or: node server.js
+npm start     # or: node server.js```
 Then open your browser and visit:
 👉 http://localhost:3000Current: Fully functional with mock data (local demo)
 Next: Add persistence (MongoDB), authentication, and filters
