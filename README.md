@@ -81,6 +81,7 @@ npm install
 
 # 2️⃣ Start the server
 npm start     # or: node server.js
+```
 Then open: http://localhost:3000
 
 📌 Status
