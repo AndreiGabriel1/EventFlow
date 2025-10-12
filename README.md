@@ -11,7 +11,7 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 
 - **Frontend:** HTML5, CSS3, vanilla JavaScript  
 - **Backend:** Node.js, Express, EJS templates  
-- **Data:** local mock JSON (MongoDB-ready structure)  
+- **Data:** Local mock JSON (MongoDB-ready structure)  
 - **Styling:** Bootstrap 5  
 - **Versioning:** Git & GitHub  
 
@@ -23,7 +23,7 @@ It demonstrates a clean full-stack structure with server-rendered views, form ha
 - ✅ Server-rendered pages using **EJS**  
 - ✅ Client + server validation for forms  
 - ✅ Clean, responsive layout  
-- ✅ URL structure and routes that mirror REST  
+- ✅ RESTful routes  
 - ✅ Mock data for quick local demo (swap-in DB later)  
 
 ---
@@ -58,9 +58,9 @@ Express routing & middleware
 
 Rendering dynamic pages with EJS
 
-Lightweight MVC organization
+Lightweight MVC-style organization
 
-Handling HTTP requests & basic validation
+Handling HTTP requests & validation
 
 Building a responsive UI with Bootstrap
 
@@ -68,23 +68,24 @@ Building a responsive UI with Bootstrap
 
 Connect to MongoDB Atlas via Mongoose
 
-User authentication (Passport.js)
+Add user authentication (Passport.js)
 
-Filters (by date/category) + pagination
+Implement filters (by date/category) + pagination
 
-Real image uploads for events
+Support real image uploads for events
 
 💻 Run Locally
 
-Clone the project and run it on your machine:
-# 1️⃣ Install dependencies
+Clone the project and run it on your local machine:# 1️⃣ Install dependencies
 npm install
 
 # 2️⃣ Start the server
-npm start     # or: node server.js
-
-Then open your browser and visit:
+npm start
+# or:
+node server.js
+Then open your browser and go to:
 👉 http://localhost:3000
+
 📌 Status
 
 Current: Fully functional with mock data (local demo)
@@ -92,7 +93,7 @@ Next: Add persistence (MongoDB), authentication, and filters
 
 👤 Author
 
-Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change)
-GitHub: https://github.com/AndreiGabriel1
-
+Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change).
 📧 andrei.dinu.dev@gmail.com
+
+🌐 GitHub Profile
