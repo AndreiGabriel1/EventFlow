@@ -69,17 +69,13 @@ npm start     # or: node server.js
 Then open your browser and visit:  
 👉 **http://localhost:3000**
 
-```
 ## 📌 Status
 
 - **Current:** Fully functional with mock data (local demo)  
 - **Next:** Add persistence (MongoDB), authentication, and filters
 
-```
 ## 👤 Author
 
 Built by **Andrei-Gabriel Dinu** — Entry-Level Web Developer *(career change)*  
 **GitHub:** [AndreiGabriel1](https://github.com/AndreiGabriel1)  
 **Email:** andrei.dinu.dev@gmail.com
-
-```
