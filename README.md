@@ -76,6 +76,5 @@ Then open your browser and visit:
 
 ## 👤 Author
 
-Built by **Andrei-Gabriel Dinu** — Entry-Level Web Developer *(career change)*  
-**GitHub:** [AndreiGabriel1](https://github.com/AndreiGabriel1)  
-**Email:** andrei.dinu.dev@gmail.com
+**Andrei‑Gabriel Dinu** — București  
+GitHub: https://github.com/AndreiGabriel1
