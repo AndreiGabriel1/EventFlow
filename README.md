@@ -1,9 +1,9 @@
 # 🎟️ EventFlow
 
-**EventFlow** is a lightweight web app to plan and manage events — meetups, workshops, or private parties.  
-It demonstrates a clean full-stack structure with server-rendered views, form handling, and a simple data layer that’s ready to be swapped with a real database.
+**EventFlow** is a lightweight full-stack web app for planning and managing events — from meetups and workshops to private parties.  
+It demonstrates a clear, maintainable architecture with server-rendered views, form handling, and a modular data layer ready for database integration.
 
-> Portfolio project as part of my Web Developer journey. Focus on clarity, UX, and maintainable code.
+> 🧭 *Portfolio project built during my Web Developer journey — focused on clarity, UX, and clean code.*
 
 ---
 
@@ -51,28 +51,38 @@ EventFlow/
 │  └─ layout.ejs
 ├─ server.js
 └─ package.json
-💻 Run Locally
+
+---
+
+## Snippet 2 — Run Locally
+Lipește imediat sub Snippet 1.
+
+```markdown
+## 💻 Run Locally
 
 Clone the project and run it on your machine:
 
+```bash
 # Install dependencies
 npm install
 
 # Start the server
 npm start     # or: node server.js
-
-
+---
 Then open your browser and visit:
 👉 http://localhost:3000
 
-📌 Status
+---
 
-Current: Fully functional with mock data (local demo)
-Next: Add persistence (MongoDB), authentication, and filters
+## Snippet 3 — Status
+```markdown
+## 📌 Status
 
-👤 Author
+- **Current:** Fully functional with mock data (local demo)  
+- **Next:** Add persistence (MongoDB), authentication, and filters
+---
+## 👤 Author
 
-Built by Andrei-Gabriel Dinu — Entry-Level Web Developer (career change)
-GitHub: AndreiGabriel1
-
-Email: andrei.dinu.dev@gmail.com
+Built by **Andrei-Gabriel Dinu** — Entry-Level Web Developer *(career change)*  
+**GitHub:** [AndreiGabriel1](https://github.com/AndreiGabriel1)  
+**Email:** andrei.dinu.dev@gmail.com
