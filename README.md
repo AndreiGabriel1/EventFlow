@@ -56,8 +56,6 @@ EventFlow/
 
 ## 💻 Run Locally
 
----
-
 Clone the project and run it on your machine:
 
 ```bash
