@@ -1,45 +1,36 @@
 ## 🪩 EventFlow
 
-EventFlow este o aplicație web complet funcțională pentru gestionarea evenimentelor, construită cu Node.js, Express, EJS și MongoDB.
-Include sistem complet de autentificare, înregistrare, logout și rute protejate (Dashboard), toate conectate la o bază de date reală.
+**EventFlow** is a fully functional web application for managing events, built with **Node.js**, **Express**, **EJS**, and **MongoDB**.  
+It includes a complete **authentication system** with registration, login, logout, and protected routes (Dashboard), all connected to a real database.
+
+---
 
 ## 🚀 Features
 
-✅ Register / Login / Logout
-
-✅ Sesiuni persistente cu MongoStore
-
-✅ Protecție pentru rutele private (middleware isLoggedIn)
-
-✅ Dashboard dinamic pentru utilizatorul autentificat
-
-✅ Răspunsuri JSON pentru testare (/health)
-
-✅ Date demo încărcate din mock.json pentru fallback
+✅ User Registration / Login / Logout  
+✅ Persistent sessions with MongoStore  
+✅ Route protection using middleware (`isLoggedIn`)  
+✅ Dynamic dashboard for authenticated users  
+✅ JSON health-check endpoint (`/health`)  
+✅ Demo data loaded from `mock.json` (fallback)
 
 ---
 
 ## 🧰 Tech Stack
 
-Backend: Node.js, Express.js
-
-Auth: Passport.js (Local Strategy), bcrypt
-
-Database: MongoDB + Mongoose
-
-Templating: EJS
-
-Styling: CSS minimalist
-
-Session Store: connect-mongo
-
-Env: dotenv
+**Backend:** Node.js, Express.js  
+**Authentication:** Passport.js (Local Strategy), bcrypt  
+**Database:** MongoDB + Mongoose  
+**Templating:** EJS  
+**Styling:** Minimalist CSS  
+**Session Store:** connect-mongo  
+**Environment Variables:** dotenv
 
 ---
 
-## 📦 Structura proiectuluiEvent Flow 
+## 📦 Project Structure
 
-```
+```bash
 EventFlow/
 ├── data/
 │   └── mock.json
@@ -56,46 +47,29 @@ EventFlow/
 ├── models/
 │   └── User.js
 ├── server.js
-├── .env              # (NU îl comite)
+├── .env              # (DO NOT commit this file)
 ├── .gitignore
 ├── package.json
 └── README.md
-```
-
----
-
-## ⚙️ Instalare și rulare (local)
-
-1️⃣ Instalează dependențele
 
 ```
+## ⚙️ Installation & Run (Local)
+
+1️⃣ Install dependencies
 npm install
-
-```
-
-2️⃣ Creează fișierul .env în rădăcina proiectului
-
-```env
+2️⃣ Create a .env file in the root directory
 MONGODB_URI=mongodb://localhost:27017/eventflow
-SESSION_SECRET=ceva_secret
+SESSION_SECRET=your_secret_key
 PORT=3000
-
-```
-
-3️⃣ Pornește serverul (dev)
-
-```
+3️⃣ Run the development server
 npm run dev
 
-```
-
-Serverul va porni pe:
-
+Server will start at:
 👉 http://localhost:3000
 
 ---
 
-## 🔐 Rute utile
+## 🔐 Useful Routes
 
 Home: /
 
@@ -105,23 +79,26 @@ Register: /auth/register
 
 Login: /auth/login
 
-Dashboard (privat): /dashboard (disponibil doar după autentificare)
+Dashboard (protected): /dashboard (requires authentication)
 
-Logout: buton în header (dreapta sus) sau POST /auth/logout
+Logout: button in the top-right header or POST /auth/logout
 
-## 📝 Note
+---
 
-Adaugă în `.gitignore`:
+## 📝 Notes
 
-```bash
+Add these lines to .gitignore:
 node_modules
 .env
 
-```
-Pentru producție: setează cookie secure, adaugă rate limiting și validări suplimentare.
+For production:
+Use secure cookies (cookie.secure), enable rate limiting, and add extra validation for forms and inputs.
 
-## 👤 Autor
+---
 
-**Andrei-Gabriel Dinu**  
-🔗 [Portofoliu live](https://andreigabriel1.github.io)  
-💻 [GitHub](https://github.com/AndreiGabriel1)
+## 👤 Author
+
+Andrei-Gabriel Dinu
+🔗 Live Portfolio
+
+💻 GitHub Profile
