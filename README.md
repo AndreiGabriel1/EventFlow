@@ -50,6 +50,8 @@ EventFlow/
 ├── package.json
 └── README.md
 
+---
+
 # 1️⃣ Instalare dependențe
 npm install
 
