@@ -38,6 +38,7 @@ Env: dotenv
 ---
 
 ## 📦 Structura proiectuluiEventFlow/
+```
 ├── data/
 │   └── mock.json
 ├── public/
@@ -57,6 +58,7 @@ Env: dotenv
 ├── .gitignore
 ├── package.json
 └── README.md
+```
 
 ---
 
@@ -64,7 +66,7 @@ Env: dotenv
 
 1️⃣ Instalează dependențele
 
-npm install
+```npm install```
 
 2️⃣ Creează fișierul .env în rădăcina proiectului
 MONGODB_URI=mongodb://localhost:27017/eventflow
@@ -81,7 +83,7 @@ Serverul va porni pe:
 
 ## 🔐 Rute utile
 
-Home: /
+Home:
 
 Health check: /health → { "ok": true }
 
@@ -95,15 +97,14 @@ Logout: buton în header (dreapta sus) sau POST /auth/logout
 
 ## 📝 Note
 
-Adaugă în .gitignore:
+Adaugă în ```.gitignore``` :
 
 node_modules
-.env
+```.env```
 Pentru producție: setează cookie secure, adaugă rate limiting și validări suplimentare.
 
 ## 👤 Autor
 
-Andrei-Gabriel Dinu
-🔗 Portofoliu live
-
-💻 GitHub
+**Andrei-Gabriel Dinu**  
+🔗 [Portofoliu live](https://andreigabriel1.github.io)  
+💻 [GitHub](https://github.com/AndreiGabriel1)
