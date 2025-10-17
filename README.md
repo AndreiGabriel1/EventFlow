@@ -62,7 +62,7 @@ Env: dotenv
 
 ---
 
-⚙️ Instalare și rulare (local)
+## ⚙️ Instalare și rulare (local)
 
 1️⃣ Instalează dependențele
 
