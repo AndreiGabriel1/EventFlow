@@ -59,7 +59,6 @@ EventFlow/
 
 ```
 npm install
-
 ```
 2️⃣ Create a .env file in the root directory
 
@@ -70,7 +69,6 @@ PORT=3000
 3️⃣ Run the development server
 ```
  npm run dev
-
 ```
 
 Server will start at:
@@ -101,7 +99,6 @@ Add these lines to .gitignore:
 ```
 node_modules
 .env
-
 ```
 
 For production:
