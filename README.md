@@ -17,6 +17,8 @@ Include sistem complet de autentificare, înregistrare, logout și rute protejat
 
 ✅ Date demo încărcate din mock.json pentru fallback
 
+---
+
 ## 🧰 Tech Stack
 
 Backend: Node.js, Express.js
@@ -32,6 +34,8 @@ Styling: CSS minimalist
 Session Store: connect-mongo
 
 Env: dotenv
+
+---
 
 ## 📦 Structura proiectuluiEventFlow/
 ├── data/
@@ -53,16 +57,26 @@ Env: dotenv
 ├── .gitignore
 ├── package.json
 └── README.md
+
+---
+
 ⚙️ Instalare și rulare (local)
+
 1️⃣ Instalează dependențele
+
 npm install
+
 2️⃣ Creează fișierul .env în rădăcina proiectului
 MONGODB_URI=mongodb://localhost:27017/eventflow
 SESSION_SECRET=ceva_secret
 PORT=3000
+
 3️⃣ Pornește serverul (dev)
+
 npm run dev
+
 Serverul va porni pe:
+
 👉 http://localhost:3000
 
 ## 🔐 Rute utile
