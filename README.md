@@ -37,7 +37,7 @@ Env: dotenv
 
 ---
 
-## 📦 Structura proiectuluiEventFlow/
+## 📦 Structura proiectuluiEvent Flow :
 
 ```
 EventFlow/
@@ -118,8 +118,6 @@ node_modules
 .env
 
 ```
----
-
 Pentru producție: setează cookie secure, adaugă rate limiting și validări suplimentare.
 
 ## 👤 Autor
