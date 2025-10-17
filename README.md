@@ -56,13 +56,22 @@ EventFlow/
 ## ⚙️ Installation & Run (Local)
 
 1️⃣ Install dependencies
+
+```
 npm install
+
+```
 2️⃣ Create a .env file in the root directory
+
 MONGODB_URI=mongodb://localhost:27017/eventflow
 SESSION_SECRET=your_secret_key
 PORT=3000
+
 3️⃣ Run the development server
-npm run dev
+```
+ npm run dev
+
+```
 
 Server will start at:
 👉 http://localhost:3000
