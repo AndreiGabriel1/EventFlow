@@ -70,7 +70,8 @@ Serverul va porni pe:
 
 ## 👤 Autor
 
-Andrei-Gabriel Dinu
-🔗 Portofoliu live
+## 👤 Autor
 
-💻 GitHub
+**Andrei-Gabriel Dinu**  
+🔗 [Portofoliu live](https://andreigabriel1.github.io)  
+💻 [GitHub](https://github.com/AndreiGabriel1)
