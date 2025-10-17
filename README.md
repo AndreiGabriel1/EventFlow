@@ -75,7 +75,7 @@ PORT=3000
 
 3️⃣ Pornește serverul (dev)
 
-npm run dev
+```npm run dev```
 
 Serverul va porni pe:
 
