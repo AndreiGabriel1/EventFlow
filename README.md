@@ -38,7 +38,9 @@ Env: dotenv
 ---
 
 ## 📦 Structura proiectuluiEventFlow/
+
 ```
+EventFlow/
 ├── data/
 │   └── mock.json
 ├── public/
@@ -66,16 +68,26 @@ Env: dotenv
 
 1️⃣ Instalează dependențele
 
-```npm install```
+```
+npm install
+
+```
 
 2️⃣ Creează fișierul .env în rădăcina proiectului
+
+```env
 MONGODB_URI=mongodb://localhost:27017/eventflow
 SESSION_SECRET=ceva_secret
 PORT=3000
 
+```
+
 3️⃣ Pornește serverul (dev)
 
-```npm run dev```
+```
+npm run dev
+
+```
 
 Serverul va porni pe:
 
@@ -99,10 +111,17 @@ Logout: buton în header (dreapta sus) sau POST /auth/logout
 
 ## 📝 Note
 
-Adaugă în ```.gitignore``` :
+Adaugă în:
+```
+`.gitignore`:
+
+``` 
 
 node_modules
-```.env```
+
+.env
+
+```
 Pentru producție: setează cookie secure, adaugă rate limiting și validări suplimentare.
 
 ## 👤 Autor
