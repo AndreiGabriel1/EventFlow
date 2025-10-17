@@ -1,9 +1,9 @@
-🪩 EventFlow
+## 🪩 EventFlow
 
 EventFlow este o aplicație web complet funcțională pentru gestionarea evenimentelor, construită cu Node.js, Express, EJS și MongoDB.
 Include sistem complet de autentificare, înregistrare, logout și rute protejate (Dashboard), toate conectate la o bază de date reală.
 
-🚀 Features
+## 🚀 Features
 
 ✅ Register / Login / Logout
 
@@ -17,7 +17,7 @@ Include sistem complet de autentificare, înregistrare, logout și rute protejat
 
 ✅ Date demo încărcate din mock.json pentru fallback
 
-🧰 Tech Stack
+## 🧰 Tech Stack
 
 Backend: Node.js, Express.js
 
@@ -33,7 +33,7 @@ Session Store: connect-mongo
 
 Env: dotenv
 
-📦 Structura proiectuluiEventFlow/
+## 📦 Structura proiectuluiEventFlow/
 ├── data/
 │   └── mock.json
 ├── public/
