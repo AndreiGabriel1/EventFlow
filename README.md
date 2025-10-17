@@ -65,11 +65,12 @@ npm install
 MONGODB_URI=mongodb://localhost:27017/eventflow
 SESSION_SECRET=your_secret_key
 PORT=3000
+
 ```
 
 3️⃣ Run the development server
 ```
- npm run dev
+npm run dev
 ```
 
 Server will start at:
@@ -79,17 +80,17 @@ Server will start at:
 
 ## 🔐 Useful Routes
 
-Home: /
+ -Home: /
 
-Health check: /health → { "ok": true }
+ -Health check: /health → { "ok": true }
 
-Register: /auth/register
+ -Register: /auth/register
 
-Login: /auth/login
+ -Login: /auth/login
 
-Dashboard (protected): /dashboard (requires authentication)
+ -Dashboard (protected): /dashboard (requires authentication)
 
-Logout: button in the top-right header or POST /auth/logout
+ -Logout: button in the top-right header or POST /auth/logout
 
 ---
 
