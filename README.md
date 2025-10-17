@@ -1,84 +1,73 @@
-# 🎟️ EventFlow
+# 🪩 EventFlow
 
-**EventFlow** is a lightweight full-stack web app for planning and managing events — from meetups and workshops to private parties.  
-It demonstrates a clear, maintainable architecture with server-rendered views, form handling, and a modular data layer ready for database integration.
-
-> 🧭 *Portfolio project built during my Web Developer journey — focused on clarity, UX, and clean code.*
-
----
-
-## ⚙️ Tech Stack
-
-- **Frontend:** HTML5, CSS3, vanilla JavaScript  
-- **Backend:** Node.js, Express, EJS templates  
-- **Data:** Local mock JSON (MongoDB-ready structure)  
-- **Styling:** Bootstrap 5  
-- **Versioning:** Git & GitHub  
+**EventFlow** este o aplicație web complet funcțională pentru gestionarea evenimentelor, construită cu **Node.js**, **Express**, **EJS** și **MongoDB**.  
+Include sistem complet de **autentificare**, **înregistrare**, **logout** și **rute protejate** (Dashboard), toate conectate la o bază de date reală.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Create / list / edit / delete events (CRUD)  
-- ✅ Server-rendered pages using **EJS**  
-- ✅ Client + server validation for forms  
-- ✅ Clean, responsive layout  
-- ✅ REST-like URL structure and routes  
-- ✅ Mock data for quick local demo (swap-in DB later)  
+- ✅ Register / Login / Logout
+- ✅ Sesiuni persistente cu MongoStore
+- ✅ Protecție pentru rutele private (middleware `isLoggedIn`)
+- ✅ Dashboard dinamic pentru utilizatorul autentificat
+- ✅ Răspunsuri JSON pentru testare (`/health`)
+- ✅ Date demo încărcate din `mock.json` pentru fallback
 
 ---
 
-## 📸 Preview
+## 🧰 Tech Stack
 
-![Preview](public/img/mock.png)
+- **Backend:** Node.js, Express.js  
+- **Auth:** Passport.js (Local Strategy), bcrypt  
+- **Database:** MongoDB + Mongoose  
+- **Templating:** EJS  
+- **Styling:** CSS minimalist  
+- **Session Store:** connect-mongo  
+- **Env:** dotenv  
 
 ---
 
-## 🧩 Project Structure
-
-```text
-EventFlow/
-├─ data/
-│  └─ mock.json
-├─ public/
-│  ├─ css/
-│  │  └─ app.css
-│  └─ img/
-│     └─ mock.png
-├─ views/
-│  ├─ index.ejs
-│  ├─ event.ejs
-│  └─ layout.ejs
-├─ server.js
-└─ package.json
-
-```
-
-## 💻 Run Locally
-
-Clone the project and run it on your machine:
+## 📦 Structura proiectului
 
 ```bash
-# Install dependencies
+EventFlow/
+├── data/
+│   └── mock.json
+├── public/
+│   └── css/
+│       └── main.css
+├── routes/
+│   └── auth.js
+├── views/
+│   ├── index.ejs
+│   ├── dashboard.ejs
+│   └── partials/
+│       └── header.ejs
+├── server.js
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
+
+# 1️⃣ Instalare dependențe
 npm install
 
-# Start the server
-npm start     # or: node server.js
+# 2️⃣ Setare fișier .env
+MONGODB_URI=mongodb://localhost:27017/eventflow
+SESSION_SECRET=ceva_secret
 
-```
-Then open your browser and visit:  
-👉 **http://localhost:3000**
+# 3️⃣ Pornire server (dev)
+npm run dev
 
----
-
-## 📌 Status
-
-- **Current:** Fully functional with mock data (local demo)  
-- **Next:** Add persistence (MongoDB), authentication, and filters
+Serverul va porni pe:
+👉 http://localhost:3000
 
 ---
 
-## 👤 Author
+## 👤 Autor
 
-**Andrei‑Gabriel Dinu** — București  
-GitHub: https://github.com/AndreiGabriel1
+Andrei-Gabriel Dinu
+🔗 Portofoliu live
+
+💻 GitHub
