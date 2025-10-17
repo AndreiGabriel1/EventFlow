@@ -53,14 +53,14 @@ EventFlow/
 
 ---
 
-# 1️⃣ Instalare dependențe
+## 1️⃣ Instalare dependențe
 npm install
 
-# 2️⃣ Setare fișier .env
+## 2️⃣ Setare fișier .env
 MONGODB_URI=mongodb://localhost:27017/eventflow
 SESSION_SECRET=ceva_secret
 
-# 3️⃣ Pornire server (dev)
+## 3️⃣ Pornire server (dev)
 npm run dev
 
 Serverul va porni pe:
