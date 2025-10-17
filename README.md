@@ -85,7 +85,7 @@ Serverul va porni pe:
 
 ## 🔐 Rute utile
 
-Home:
+Home: /
 
 Health check: /health → { "ok": true }
 
