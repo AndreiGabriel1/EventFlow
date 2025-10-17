@@ -81,6 +81,8 @@ Serverul va porni pe:
 
 👉 http://localhost:3000
 
+---
+
 ## 🔐 Rute utile
 
 Home:
