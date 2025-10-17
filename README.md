@@ -109,7 +109,6 @@ Use secure cookies (cookie.secure), enable rate limiting, and add extra validati
 
 ## 👤 Author
 
-Andrei-Gabriel Dinu
-
+**Andrei-Gabriel Dinu**  
 🔗 [Live Portfolio](https://andreigabriel1.github.io)  
 💻 [GitHub Profile](https://github.com/AndreiGabriel1)
