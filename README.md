@@ -121,7 +121,8 @@ node_modules
 
 .env
 
-```
+---
+
 Pentru producție: setează cookie secure, adaugă rate limiting și validări suplimentare.
 
 ## 👤 Autor
