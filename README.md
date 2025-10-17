@@ -100,7 +100,6 @@ Add these lines to .gitignore:
 node_modules
 .env
 ```
-
 For production:
 Use secure cookies (cookie.secure), enable rate limiting, and add extra validation for forms and inputs.
 
