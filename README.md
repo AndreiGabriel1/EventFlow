@@ -37,7 +37,7 @@ Env: dotenv
 
 ---
 
-## 📦 Structura proiectuluiEvent Flow :
+## 📦 Structura proiectuluiEvent Flow 
 
 ```
 EventFlow/
