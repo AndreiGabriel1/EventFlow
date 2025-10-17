@@ -111,14 +111,10 @@ Logout: buton în header (dreapta sus) sau POST /auth/logout
 
 ## 📝 Note
 
-Adaugă în:
-```
-`.gitignore`:
+Adaugă în `.gitignore`:
 
-``` 
-
+```bash
 node_modules
-
 .env
 
 ---
