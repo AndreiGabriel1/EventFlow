@@ -35,7 +35,6 @@ flowchart LR
   API -->|"Prisma"| DB[(PostgreSQL)]
   FE -->|"NextAuth"| AUTH[Auth]
   FE -->|"ISR (Edge/CDN)"| CDN[CDN/Edge]
-
 ```
 
 ---
