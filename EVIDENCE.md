@@ -27,13 +27,13 @@
 - **Validation:** zod (schemă partajată FE & BE).  
 - **CI/CD:** GitHub Actions (lint, type-check, test, build), deploy pe Vercel/Railway.
 
-```mermaid
 flowchart LR
-  U[User] -->|HTTP/HTTPS| FE[Next.js (TS)]
-  FE -->|React Query| API[Node/Express API]
-  API --> DB[(PostgreSQL/Prisma)]
-  FE --> AUTH[NextAuth]
-  FE --> CDN[Edge/CDN - ISR]
+  U[User] -->|"HTTP/HTTPS"| FE[Next.js (TS)]
+  FE -->|"React Query"| API[Node/Express API]
+  API -->|"Prisma"| DB[(PostgreSQL)]
+  FE -->|"NextAuth"| AUTH[Auth]
+  FE -->|"ISR (Edge/CDN)"| CDN[CDN/Edge]
+
 
 ## 3) Core Features
 
