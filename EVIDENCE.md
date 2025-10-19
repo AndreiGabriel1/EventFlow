@@ -1,48 +1,5 @@
 # EventFlow — EVIDENCE.md
 
-**Role:** Front-End Developer (with light technical coordination)  
-**Timeline:** October 2024 – January 2025 (ongoing)  
-**Main Stack:** TypeScript, React, Next.js (App Router), TailwindCSS, Zustand / Redux Toolkit, Node.js (API), PostgreSQL / Prisma  
-**Goal:** Build a scalable, high-performance web platform for event management (creation, registration, ticketing, analytics).
-
----
-
-## 1) Objectives & Results
-
-- ✅ **MVP delivered**: event listing, details page, authentication, event creation/editing, publishing & registration flow.  
-- ✅ **TypeScript patterns implemented**: discriminated unions, branded types for IDs, and Zod-based validation.  
-- ✅ **Performance optimization**: ISR/SSG (Next.js), code-splitting, lazy imports; LCP under 2.1s on “Fast 4G”.  
-- ✅ **Accessibility compliance**: full keyboard navigation, aria-labels, focus states; no critical Axe issues.  
-- ✅ **Stability**: component testing with Vitest/RTL + API contract validation (OpenAPI + zod).  
-- 📈 **Q4 roadmap:** Stripe payments, CSV/Excel export, analytics dashboard, mobile QR check-in.
-
----
-
-## 2) Architecture Overview
-
-- **Frontend:** Next.js 14 (App Router), **strict TypeScript**, TailwindCSS + Radix UI.  
-- **State Management:** Zustand (UI & feature state), React Query for async data.  
-- **Backend:** Node.js/Express (or Next API routes) with **Prisma + PostgreSQL**.  
-- **Auth:** NextAuth (email / OAuth) with JWT sessions.  
-- **Validation:** zod (shared schema between FE & BE).  
-- **CI/CD:** GitHub Actions (lint, type-check, test, build), deploy on Vercel / Railway.
-
-```mermaid
-flowchart LR
-  U[User] -->|HTTP/HTTPS| FE[Next.js (TS)]
-  FE -->|React Query| API[Node/Express API]
-  API --> DB[(PostgreSQL/Prisma)]
-  FE --> AUTH[NextAuth]
-  FE --> CDN[Edge/CDN - ISR]
-# EventFlow — EVIDENCE.md
-
-**Role:** Front-End Developer (with light technical coordination)  
-**Timeline:** October 2024 – January 2025 (ongoing)  
-**Main Stack:** TypeScript, React, Next.js (App Router), TailwindCSS, Zustand / Redux Toolkit, Node.js (API), PostgreSQL / Prisma  
-**Goal:** Build a scalable, high-performance web platform for event management (creation, registration, ticketing, analytics).
-
----
-
 ## 1) Objectives & Results
 
 - ✅ **MVP delivered**: event listing, details page, authentication, event creation/editing, publishing & registration flow.  
