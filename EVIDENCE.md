@@ -30,11 +30,11 @@
 
 ```mermaid
 flowchart LR
-  U[User] -->|"HTTP/HTTPS"| FE[Next.js (TS)]
+  U[User] -->|"HTTP or HTTPS"| FE[Next.js TS
   FE -->|"React Query"| API[Node/Express API]
   API -->|"Prisma"| DB[(PostgreSQL)]
   FE -->|"NextAuth"| AUTH[Auth]
-  FE -->|"ISR (Edge/CDN)"| CDN[CDN/Edge]
+  FE -->|"ISR Edge CDN"| CDN[CDN/Edge]
 ```
 
 ---
