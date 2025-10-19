@@ -118,43 +118,7 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 
 
-\- Nu există încă testare automată (Jest / Cypress);
-
-\- Datele nu sunt persistate într-o bază reală (doar mock data);
-
-\- Posibilitate de îmbunătățire a gestionării erorilor în rețea.
-
-
-
----
-
-
-
-\## 7. 🔁 Următorii pași
-
-
-
-\- Adăugarea testelor unitare pentru componente majore (React);
-
-\- Implementarea persistării reale cu backend Node.js + MongoDB;
-
-\- Optimizare UI/UX și documentarea flow-urilor detaliate;
-
-\- Integrare CI/CD (GitHub Actions pentru testare automată).
-
-
-
----
-
-
-
-\## 8. 🧠 Concluzie
-
-
-
-Toate funcționalitățile de bază testate în versiunea `v1.0.0` funcționează conform așteptărilor.  
-
-Proiectul este stabil pentru faza actuală și pregătit pentru trecerea la etapa de \*\*testare automată + backend integration\*\*.
+\- Nu există încă testare automată (Jest /
 
 
 
