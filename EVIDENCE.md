@@ -1,4 +1,4 @@
-\## 🧾 EventFlow – EVIDENCE
+## 🧾 EventFlow – EVIDENCE
 
 
 
@@ -12,7 +12,7 @@ Scopul este să demonstreze că aplicația funcționează conform cerințelor de
 
 
 
-\## 1. 🔍 Scopul documentului
+## 1. 🔍 Scopul documentului
 
 
 
@@ -32,7 +32,7 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 
 
-\## 2. 🧩 Contextul testării
+## 2. 🧩 Contextul testării
 
 
 
@@ -58,7 +58,7 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 
 
-\## 3. ✅ Cazuri testate (scenarii principale)
+## 3. ✅ Cazuri testate (scenarii principale)
 
 
 
@@ -82,7 +82,7 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 
 
-\## 4. 📸 Dovezi vizuale
+## 4. 📸 Dovezi vizuale
 
 
 
@@ -96,7 +96,7 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 
 
-\## 5. ⚙️ Observații tehnice
+## 5. ⚙️ Observații tehnice
 
 
 
@@ -114,11 +114,25 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 
 
-\## 6. 🚧 Riscuri și limitări
+## 6. 🚧 Riscuri și limitări
 
+---
 
+- Nu există încă testare automată (Jest / Cypress);
+- Datele nu sunt persistate într-o bază reală (doar mock data);
+- Posibilitate de îmbunătățire a gestionării erorilor în rețea.
+---
 
-\- Nu există încă testare automată (Jest /
+## 7. 🔁 Următorii pași
 
+- Adăugarea testelor unitare pentru componente majore (React);
+- Implementarea persistării reale cu backend Node.js + MongoDB;
+- Optimizare UI/UX și documentarea flow-urilor detaliate;
+- Integrare CI/CD (GitHub Actions pentru testare automată).
 
+---
 
+## 8. 🧠 Concluzie
+
+Toate funcționalitățile de bază testate în versiunea `v1.0.0` funcționează conform așteptărilor.  
+Proiectul este stabil pentru faza actuală și pregătit pentru trecerea la etapa de **testare automată + backend integration**.
