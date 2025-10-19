@@ -18,6 +18,8 @@
 
 ---
 
+---
+
 ## 2) Architecture Overview
 
 - **Frontend:** Next.js 14 (App Router), strict TypeScript, TailwindCSS + Radix UI.  
@@ -34,18 +36,24 @@ flowchart LR
   API -->|"Prisma"| DB[(PostgreSQL)]
   FE -->|"NextAuth"| AUTH[Auth]
   FE -->|"ISR (Edge/CDN)"| CDN[CDN/Edge]
-3) Core Features
-Create & manage events (draft → published → archived).
+```
 
-SEO-optimized public pages; registration & ticket confirmation.
+---
 
-Organizer dashboard: statistics, export participants, ticket statuses.
+---
 
-Check-in (in progress): QR scanning & real-time status update.
+## 3) Core Features
 
-4) Data Model (excerpt)
-ts
-Copiază codul
+- Create & manage events (draft → published → archived).  
+- SEO-optimized public pages; registration & ticket confirmation.  
+- Organizer dashboard: statistics, export participants, ticket statuses.  
+- Check-in (in progress): QR scanning & real-time status update.
+
+---
+
+## 4) Data Model (excerpt)
+
+```ts
 // types/shared.ts
 export type EventStatus = 'draft' | 'published' | 'archived';
 
@@ -65,52 +73,64 @@ export interface Event {
   capacity?: number;
   status: EventStatus;
 }
-5) API Endpoints (contracts)
-GET /api/events — list events (filters: status, date range, keyword)
+```
 
-GET /api/events/:id — get event details
+---
 
-POST /api/events — create event (Zod schema, auth required)
+---
 
-PATCH /api/events/:id — edit event
+## 5) API Endpoints (contracts)
 
-POST /api/events/:id/register — register attendee
+- `GET /api/events` — list events (filters: status, date range, keyword)  
+- `GET /api/events/:id` — get event details  
+- `POST /api/events` — create event (Zod schema, auth required)  
+- `PATCH /api/events/:id` — edit event  
+- `POST /api/events/:id/register` — register attendee  
 
-Contracts definite în apps/api/src/schemas/*.ts și documentate cu OpenAPI.
+> Contracts definite în `apps/api/src/schemas/*.ts` și documentate cu OpenAPI.
 
-6) Frontend Components & State
-Components: EventCard, EventForm, EventList, RegistrationForm, StatsPanel.
+---
 
-Zustand slices: uiSlice (modals, toasts), filtersSlice (keywords, status).
+## 6) Frontend Components & State
 
-React Query: caching pe resursele “events”, optimistic updates pentru create/edit.
+- **Components:** `EventCard`, `EventForm`, `EventList`, `RegistrationForm`, `StatsPanel`.  
+- **Zustand slices:** `uiSlice` (modals, toasts), `filtersSlice` (keywords, status).  
+- **React Query:** caching pe resursele “events”, optimistic updates pentru create/edit.
 
-7) Quality & Performance
-TypeScript strict ("strict": true, noImplicitAny).
+---
 
-ESLint + Prettier + typescript-eslint.
+---
 
-Vitest + React Testing Library (target: 70%+ coverage).
+## 7) Quality & Performance
 
-Lighthouse: LCP < 2.1s, CLS < 0.05, 90+ score pe public pages.
+- **TypeScript strict** (`"strict": true`, `noImplicitAny`).  
+- **ESLint + Prettier + typescript-eslint**.  
+- **Vitest + React Testing Library** (target: 70%+ coverage).  
+- **Lighthouse:** LCP < 2.1s, CLS < 0.05, 90+ score pe public pages.  
+- **Bundle analysis:** `next-bundle-analyzer`, lazy imports pentru pagini grele.
 
-Bundle analysis: next-bundle-analyzer, lazy imports pentru pagini grele.
+---
 
-8) Security & Privacy
-Rate-limiting pe endpoint-urile sensibile; input sanitization; CORS controlat.
+## 8) Security & Privacy
 
-Token-uri scurte, refresh flow sigur; cookie flags (HttpOnly, SameSite).
+- Rate-limiting pe endpoint-urile sensibile; input sanitization; CORS controlat.  
+- Token-uri scurte, refresh flow sigur; cookie flags (HttpOnly, SameSite).  
+- Secrete în `.env` (GitHub Actions → Environments; Vercel → Project Settings).
 
-Secrete în .env (GitHub Actions → Environments; Vercel → Project Settings).
+---
 
-9) Accessibility (A11y)
-ARIA corect, structură de heading-uri, contrast WCAG AA.
+## 9) Accessibility (A11y)
 
-Focus management pentru dialogs; live regions pentru erori de validare.
+- ARIA corect, structură de heading-uri, contrast WCAG AA.  
+- Focus management pentru dialogs; live regions pentru erori de validare.
 
-10) Setup & Run
-bash
-Copiază codul
+---
+
+---
+
+## 10) Setup & Run
+
+```bash
 # 1) Clone repository
 git clone https://github.com/AndreiGabriel1/EventFlow.git
 cd EventFlow
@@ -122,30 +142,36 @@ cp .env.example .env.local
 # 3) Install deps & start dev server
 pnpm install      # sau npm/yarn
 pnpm dev
-11) Screenshots & Demo
-Screenshots în docs/screenshots/ (UI, event list, creation form, dashboard).
+```
 
-Live demo (Vercel): to be added after deployment.
+---
 
-12) Personal Contributions (Evidence)
-Design model de date și API contracts.
+## 11) Screenshots & Demo
 
-Implementare front-end strict TypeScript (react-hook-form + zod).
+- Screenshots în `docs/screenshots/` (UI, event list, creation form, dashboard).  
+- Live demo (Vercel): _to be added after deployment_.
 
-Optimizări de performanță (ISR, lazy loading, memoization).
+---
 
-Setup CI pipeline (type-check, test, build, deploy).
+## 12) Personal Contributions (Evidence)
 
-13) Roadmap
-Integrare Stripe payments (paid events).
+- Design model de date și API contracts.  
+- Implementare front-end strict TypeScript (react-hook-form + zod).  
+- Optimizări de performanță (ISR, lazy loading, memoization).  
+- Setup CI pipeline (type-check, test, build, deploy).
 
-QR-based check-in (web + PWA).
+---
 
-Event analytics dashboard.
+## 13) Roadmap
 
-CSV/Excel export & import.
+- Integrare **Stripe payments** (paid events).  
+- **QR-based check-in** (web + PWA).  
+- **Event analytics dashboard**.  
+- **CSV/Excel export & import**.
 
-14) License & Contact
-License: MIT
+---
 
-Author: Andrei Gabriel — LinkedIn | GitHub
+## 14) License & Contact
+
+- **License:** MIT  
+- **Author:** Andrei Gabriel — [LinkedIn](https://www.linkedin.com/in/andrei-gabriel-dinu-173240251/) · [GitHub](https://github.com/AndreiGabriel1)
