@@ -1,5 +1,9 @@
 ## 🪩 EventFlow
 
+# EventFlow
+
+[![Docs](https://img.shields.io/badge/docs-EVIDENCE-blue?style=for-the-badge&logo=markdown)](./EVIDENCE.md)
+
 > 📘 **Full project documentation & technical evidence:** [EVIDENCE.md](./EVIDENCE.md)
 
 **EventFlow** is a fully functional web application for managing events, built with **Node.js**, **Express**, **EJS**, and **MongoDB**.  
