@@ -26,7 +26,7 @@
 - **Backend:** Node.js/Express (sau Next API routes) cu **Prisma + PostgreSQL**.  
 - **Auth:** NextAuth (email / OAuth) cu sesiuni JWT.  
 - **Validation:** zod (schemă partajată FE & BE).  
-- **CI/CD:** GitHub Actions (lint, type-check, test, build), deploy pe Vercel/Railway.
+- **CI/CD:** GitHub Actions (lint, type-check, test, build), deploy pe Vercel / Railway.
 
 ```mermaid
 flowchart LR
@@ -118,8 +118,6 @@ export interface Event {
 
 - ARIA corect, structură de heading-uri, contrast WCAG AA.  
 - Focus management pentru dialogs; live regions pentru erori de validare.
-
----
 
 ---
 
