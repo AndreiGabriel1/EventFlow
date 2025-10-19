@@ -18,7 +18,6 @@
 
 ---
 
----
 
 ## 2) Architecture Overview
 
@@ -36,11 +35,11 @@ flowchart LR
   API -->|"Prisma"| DB[(PostgreSQL)]
   FE -->|"NextAuth"| AUTH[Auth]
   FE -->|"ISR (Edge/CDN)"| CDN[CDN/Edge]
+
 ```
 
 ---
 
----
 
 ## 3) Core Features
 
@@ -77,8 +76,6 @@ export interface Event {
 
 ---
 
----
-
 ## 5) API Endpoints (contracts)
 
 - `GET /api/events` — list events (filters: status, date range, keyword)  
@@ -96,8 +93,6 @@ export interface Event {
 - **Components:** `EventCard`, `EventForm`, `EventList`, `RegistrationForm`, `StatsPanel`.  
 - **Zustand slices:** `uiSlice` (modals, toasts), `filtersSlice` (keywords, status).  
 - **React Query:** caching pe resursele “events”, optimistic updates pentru create/edit.
-
----
 
 ---
 
