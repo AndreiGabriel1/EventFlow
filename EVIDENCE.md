@@ -27,16 +27,14 @@
 - **Validation:** zod (schemă partajată FE & BE).  
 - **CI/CD:** GitHub Actions (lint, type-check, test, build), deploy pe Vercel/Railway.
 
+```mermaid
 flowchart LR
   U[User] -->|"HTTP/HTTPS"| FE[Next.js (TS)]
   FE -->|"React Query"| API[Node/Express API]
   API -->|"Prisma"| DB[(PostgreSQL)]
   FE -->|"NextAuth"| AUTH[Auth]
   FE -->|"ISR (Edge/CDN)"| CDN[CDN/Edge]
-
-
-## 3) Core Features
-
+3) Core Features
 Create & manage events (draft → published → archived).
 
 SEO-optimized public pages; registration & ticket confirmation.
@@ -45,10 +43,9 @@ Organizer dashboard: statistics, export participants, ticket statuses.
 
 Check-in (in progress): QR scanning & real-time status update.
 
----
-
 4) Data Model (excerpt)
-
+ts
+Copiază codul
 // types/shared.ts
 export type EventStatus = 'draft' | 'published' | 'archived';
 
@@ -68,11 +65,7 @@ export interface Event {
   capacity?: number;
   status: EventStatus;
 }
-
----
-
-## 5) API Endpoints (contracts)
-
+5) API Endpoints (contracts)
 GET /api/events — list events (filters: status, date range, keyword)
 
 GET /api/events/:id — get event details
@@ -85,20 +78,14 @@ POST /api/events/:id/register — register attendee
 
 Contracts definite în apps/api/src/schemas/*.ts și documentate cu OpenAPI.
 
----
-
-## 6) Frontend Components & State
-
+6) Frontend Components & State
 Components: EventCard, EventForm, EventList, RegistrationForm, StatsPanel.
 
 Zustand slices: uiSlice (modals, toasts), filtersSlice (keywords, status).
 
 React Query: caching pe resursele “events”, optimistic updates pentru create/edit.
 
----
-
-## 7) Quality & Performance
-
+7) Quality & Performance
 TypeScript strict ("strict": true, noImplicitAny).
 
 ESLint + Prettier + typescript-eslint.
@@ -109,28 +96,21 @@ Lighthouse: LCP < 2.1s, CLS < 0.05, 90+ score pe public pages.
 
 Bundle analysis: next-bundle-analyzer, lazy imports pentru pagini grele.
 
----
-
-## 8) Security & Privacy
-
+8) Security & Privacy
 Rate-limiting pe endpoint-urile sensibile; input sanitization; CORS controlat.
 
 Token-uri scurte, refresh flow sigur; cookie flags (HttpOnly, SameSite).
 
 Secrete în .env (GitHub Actions → Environments; Vercel → Project Settings).
 
----
-
-## 9) Accessibility (A11y)
-
+9) Accessibility (A11y)
 ARIA corect, structură de heading-uri, contrast WCAG AA.
 
 Focus management pentru dialogs; live regions pentru erori de validare.
 
----
-
-## 10) Setup & Run
-
+10) Setup & Run
+bash
+Copiază codul
 # 1) Clone repository
 git clone https://github.com/AndreiGabriel1/EventFlow.git
 cd EventFlow
@@ -142,20 +122,12 @@ cp .env.example .env.local
 # 3) Install deps & start dev server
 pnpm install      # sau npm/yarn
 pnpm dev
-
-```
----
-
-## 11) Screenshots & Demo
-
+11) Screenshots & Demo
 Screenshots în docs/screenshots/ (UI, event list, creation form, dashboard).
 
 Live demo (Vercel): to be added after deployment.
 
----
-
-## 12) Personal Contributions (Evidence)
-
+12) Personal Contributions (Evidence)
 Design model de date și API contracts.
 
 Implementare front-end strict TypeScript (react-hook-form + zod).
@@ -164,10 +136,7 @@ Optimizări de performanță (ISR, lazy loading, memoization).
 
 Setup CI pipeline (type-check, test, build, deploy).
 
----
-
-## 13) Roadmap
-
+13) Roadmap
 Integrare Stripe payments (paid events).
 
 QR-based check-in (web + PWA).
@@ -176,10 +145,7 @@ Event analytics dashboard.
 
 CSV/Excel export & import.
 
----
-
-## 14) License & Contact
-
+14) License & Contact
 License: MIT
 
 Author: Andrei Gabriel — LinkedIn | GitHub
