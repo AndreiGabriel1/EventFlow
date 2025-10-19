@@ -1,5 +1,7 @@
 ## 🪩 EventFlow
 
+> 📘 **Full project documentation & technical evidence:** [EVIDENCE.md](./EVIDENCE.md)
+
 **EventFlow** is a fully functional web application for managing events, built with **Node.js**, **Express**, **EJS**, and **MongoDB**.  
 It includes a complete **authentication system** with registration, login, logout, and protected routes (Dashboard), all connected to a real database.
 
