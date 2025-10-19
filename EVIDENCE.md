@@ -14,6 +14,8 @@ Scopul este să demonstreze că aplicația funcționează conform cerințelor de
 
 \## 1. 🔍 Scopul documentului
 
+
+
 Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*EventFlow\*\*, incluzând:
 
 \- Validarea principalelor fluxuri de utilizare (UI + backend);
@@ -31,6 +33,8 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 
 \## 2. 🧩 Contextul testării
+
+
 
 | Element | Descriere |
 
@@ -94,6 +98,8 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 \## 5. ⚙️ Observații tehnice
 
+
+
 \- Componentele React se reîncarcă fără erori în console;
 
 \- Hook-urile `useState` și `useEffect` se comportă corect în fazele de update;
@@ -110,6 +116,8 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 \## 6. 🚧 Riscuri și limitări
 
+
+
 \- Nu există încă testare automată (Jest / Cypress);
 
 \- Datele nu sunt persistate într-o bază reală (doar mock data);
@@ -123,6 +131,8 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 
 \## 7. 🔁 Următorii pași
+
+
 
 \- Adăugarea testelor unitare pentru componente majore (React);
 
@@ -139,6 +149,8 @@ Acest fișier oferă o sinteză a testelor efectuate asupra proiectului \*\*Even
 
 
 \## 8. 🧠 Concluzie
+
+
 
 Toate funcționalitățile de bază testate în versiunea `v1.0.0` funcționează conform așteptărilor.  
 
