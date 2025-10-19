@@ -143,6 +143,8 @@ flowchart LR
   FE --> AUTH[NextAuth]
   FE --> CDN[Edge/CDN - ISR]
 
+```
+
 ---
 
 ## 3) Core Features
