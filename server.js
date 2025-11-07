@@ -35,9 +35,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/eventflow';
 
 mongoose
-  mongoose
   .connect(MONGO_URI, { dbName: 'eventflow' })
   .then(() => {
+
     console.log('✅ MongoDB connected');
 
     // sesiune (folosește clientul existent din mongoose)
@@ -74,6 +74,8 @@ mongoose
 
     // auth (/auth/register, /auth/login, /auth/logout)
     app.use('/auth', authRoutes);
+    app.use('/api', require('./routes/api'));
+
 
     // protecție rute
     function isLoggedIn(req, res, next) {

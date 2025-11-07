@@ -10,7 +10,46 @@
 
   <main>
     <h1>EventFlow</h1>
+    <input id="search" placeholder="Caută evenimente / clienți..." />
+    <ul id="results"></ul>
+
     <p>Date demo încărcate din <code>data/mock.json</code>.</p>
+    <input
+  type="text"
+  id="search"
+  placeholder="Caută evenimente..."
+  style="padding: 8px; width: 250px; margin-bottom: 10px;"
+>
+
+<ul id="results"></ul>
+
+<script>
+  const input = document.getElementById('search');
+  const list = document.getElementById('results');
+  let timeoutId;
+
+  input.addEventListener('input', (e) => {
+    const q = e.target.value.trim();
+
+    clearTimeout(timeoutId); // resetează timerul dacă mai tastezi ceva
+
+    timeoutId = setTimeout(async () => {
+      if (!q) {
+        list.innerHTML = '';
+        return;
+      }
+
+      const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+      const data = await res.json();
+
+      list.innerHTML = data.length
+        ? data.map(it => `<li><strong>${it.title}</strong><br>${it.info}</li>`).join('')
+        : '<li><em>Niciun rezultat găsit.</em></li>';
+    }, 300); // așteaptă 300ms după ce ai terminat de tastat
+  });
+</script>
+
+
 
     <ul>
       <% if (data && data.items && data.items.length) { %>
@@ -25,5 +64,7 @@
       <% } %>
     </ul>
   </main>
+
+  <script type="module" src="/js/search.js"></script>
 </body>
 </html>
