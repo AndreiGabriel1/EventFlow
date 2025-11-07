@@ -170,8 +170,22 @@ pnpm dev
 - **Author:** Andrei Gabriel — [LinkedIn](https://www.linkedin.com/in/andrei-gabriel-dinu-173240251/) · [GitHub](https://github.com/AndreiGabriel1)
 
 
+## 15) Implementation Evidence — L1 (Express + EJS + Vanilla JS)
+
+> **Current Stack (L1):** Node.js + Express + EJS + MongoDB + Vanilla JS (ES Modules)  
+> **Goal:** Core search, data rendering, and helper logic before migrating to TypeScript + React (L2).
+
 ### 2025-11-07 — Public/JS/search.js Polish (LLBD)
-- Integrated helpers: sumBy / toDictBy.
-- Added result header (“Found X results”) + highlight (hl()).
-- Modularized client logic; prepared O(1) access via byId.
-- No API/UX regressions; console clean.
+- Integrated helpers: `sumBy()` / `toDictBy()`.
+- Added result header (“Found X results”) + highlight (`hl()`).
+- Modularized client logic; prepared O(1) access via `byId`.
+- Files touched: `views/index.ejs`, `public/js/search.js`, `public/js/utils.js`.
+- Patterns introduced: aggregation (`sumBy`), dictionary mapping (`toDictBy`), text highlighting (`hl()`).
+- No API or UX regressions — console clean.
+
+### Next (planned)
+- Extend `/api/search` to return `{ id, name, description, score }` for real data integration.  
+- Add CSS rule for `mark` highlight (`padding: 0 2px;`).  
+- Prepare unit tests for `utils.js` (helper validation).
+
+---
