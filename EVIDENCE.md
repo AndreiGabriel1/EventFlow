@@ -168,3 +168,10 @@ pnpm dev
 
 - **License:** MIT  
 - **Author:** Andrei Gabriel — [LinkedIn](https://www.linkedin.com/in/andrei-gabriel-dinu-173240251/) · [GitHub](https://github.com/AndreiGabriel1)
+
+
+### 2025-11-07 — Public/JS/search.js Polish (LLBD)
+- Integrated helpers: sumBy / toDictBy.
+- Added result header (“Found X results”) + highlight (hl()).
+- Modularized client logic; prepared O(1) access via byId.
+- No API/UX regressions; console clean.
