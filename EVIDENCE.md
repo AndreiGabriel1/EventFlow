@@ -1,191 +1,203 @@
-# EventFlow — EVIDENCE.md
+# EventFlow — Evidence & Technical Overview
 
-**Role:** Front-End Developer (with light technical coordination)  
-**Timeline:** October 2024 – January 2025 (ongoing)  
-**Main Stack:** TypeScript, React, Next.js (App Router), TailwindCSS, Zustand / React Query, Node.js (API), PostgreSQL / Prisma  
-**Goal:** Build a scalable, high-performance web platform for event management (creation, registration, ticketing, analytics).
-
----
-
-## 1) Objectives & Results
-
-- ✅ **MVP delivered**: event listing, details page, authentication, event creation/editing, publishing & registration flow.  
-- ✅ **TypeScript patterns**: discriminated unions, branded types for IDs, Zod-based validation.  
-- ✅ **Performance**: ISR/SSG (Next.js), code-splitting, lazy imports; LCP < 2.1s on “Fast 4G”.  
-- ✅ **Accessibility**: full keyboard navigation, aria-labels, focus states; no critical Axe issues.  
-- ✅ **Stability**: component testing (Vitest/RTL) + API contract validation (OpenAPI + zod).  
-- 📈 **Q4 roadmap**: Stripe payments, CSV/Excel export, analytics dashboard, mobile QR check-in.
+**Role:** Full-Stack Developer (Entry–Mid Premium)  
+**Timeline:** Nov 2025 – Jan 2026 (ongoing)  
+**Stack (Current L1–L2):** TypeScript, Node.js (Express), Vanilla JS, HTML/CSS  
+**Goal:** Build a typed, robust, modular API + search UI as foundation for L3/L4 migration (React & Next.js).
 
 ---
 
+## 1) Objectives & Delivered Work
 
-## 2) Architecture Overview
+### 🟢 Completed (Bridge #1 – TypeScript Layer)
+- Express API complet tipat (TypeScript strict)
+- Contract API stabil: `{ ok: boolean, data: Event[] }`
+- Rute implementate:
+  - `GET /api/events`
+  - `GET /api/events/search?q=`
+- `typedFetch<T>` — fetch generic + validare runtime
+- Type guards pentru siguranță:
+  - `isEvent`
+  - `isEventArray`
+  - `isApiResponseEventArray`
+- Structură de validare runtime pentru întregul API
+- Dev UI: `public/search.html` cu debounce + fetch live
+- Test runners (Node):
+  - `dev/testEvents.ts`
+  - `dev/testSearch.ts`
 
-- **Frontend:** Next.js 14 (App Router), strict TypeScript, TailwindCSS + Radix UI.  
-- **State:** Zustand (UI/feature), React Query (server state & caching).  
-- **Backend:** Node.js/Express (sau Next API routes) cu **Prisma + PostgreSQL**.  
-- **Auth:** NextAuth (email / OAuth) cu sesiuni JWT.  
-- **Validation:** zod (schemă partajată FE & BE).  
-- **CI/CD:** GitHub Actions (lint, type-check, test, build), deploy pe Vercel / Railway.
-
-```mermaid
-flowchart LR
-  U[User] -->|"HTTP/HTTPS"| FE[Next.js TS]
-  FE -->|"React Query"| API[Node/Express API]
-  API -->|"Prisma"| DB[(PostgreSQL)]
-  FE -->|"NextAuth"| AUTH[Auth]
-  FE -->|"ISR (Edge/CDN)"| CDN[CDN/Edge]
-
-```
-
----
-
-
-## 3) Core Features
-
-- Create & manage events (draft → published → archived).  
-- SEO-optimized public pages; registration & ticket confirmation.  
-- Organizer dashboard: statistics, export participants, ticket statuses.  
-- Check-in (in progress): QR scanning & real-time status update.
+### 🟢 Bridges
+- **Bridge #1 — COMPLET**
+- **Bridge #2 — programat (ApiError pipeline + input validation)**
 
 ---
 
-## 4) Data Model (excerpt)
+## 2) Project Architecture (Current L1–L2)
+
+src/
+api/
+fetchEvents.ts
+searchEvents.ts
+routes/
+events.ts
+types/
+event.ts
+apiError.ts
+utils/
+typedFetch.ts
+dev/
+testEvents.ts
+testSearch.ts
+data/
+mock.json
+server.ts
+public/
+search.html
+
+
+### Principii
+- Contract API stabil
+- TypeScript strict & runtime validation
+- Separare clară între business logic / API / utils
+- Server pregătit pentru integrarea React (L3) și Next.js (L4)
+
+---
+
+## 3) Data Models (current)
 
 ```ts
-// types/shared.ts
-export type EventStatus = 'draft' | 'published' | 'archived';
-
-export type EventId = string & { readonly brand: unique symbol }; // branded type
-
 export interface Event {
-  id: EventId;
+  id: string;
   title: string;
-  slug: string;
-  startsAt: string; // ISO
-  endsAt: string;   // ISO
-  location: {
-    type: 'online' | 'venue';
-    address?: string;
-    url?: string;
-  };
-  capacity?: number;
-  status: EventStatus;
+  dateISO: string;
+  location?: string;
 }
-```
 
----
+export interface ApiResponse<T> {
+  ok: boolean;
+  data: T;
+}
 
-## 5) API Endpoints (contracts)
+function isEvent(x: any): x is Event
+function isEventArray(x: any): x is Event[]
+function isApiResponseEventArray(d: unknown): d is ApiResponse<Event[]>
 
-- `GET /api/events` — list events (filters: status, date range, keyword)  
-- `GET /api/events/:id` — get event details  
-- `POST /api/events` — create event (Zod schema, auth required)  
-- `PATCH /api/events/:id` — edit event  
-- `POST /api/events/:id/register` — register attendee  
+4) API Endpoints — Current Contracts
+GET /api/events
 
-> Contracts definite în `apps/api/src/schemas/*.ts` și documentate cu OpenAPI.
+Returnează lista completă de evenimente mock.
 
----
+GET /api/events/search?q=
 
-## 6) Frontend Components & State
+Filtrare case-insensitive după:
 
-- **Components:** `EventCard`, `EventForm`, `EventList`, `RegistrationForm`, `StatsPanel`.  
-- **Zustand slices:** `uiSlice` (modals, toasts), `filtersSlice` (keywords, status).  
-- **React Query:** caching pe resursele “events”, optimistic updates pentru create/edit.
+titlu
 
----
+locație
 
-## 7) Quality & Performance
+Response: 
+{
+  ok: boolean,
+  data: Event[]
+}
 
-- **TypeScript strict** (`"strict": true`, `noImplicitAny`).  
-- **ESLint + Prettier + typescript-eslint**.  
-- **Vitest + React Testing Library** (target: 70%+ coverage).  
-- **Lighthouse:** LCP < 2.1s, CLS < 0.05, 90+ score pe public pages.  
-- **Bundle analysis:** `next-bundle-analyzer`, lazy imports pentru pagini grele.
+5) typedFetch<T> — Generic Data Fetching Layer
 
----
+Funcție generică TypeScript:
 
-## 8) Security & Privacy
+fetch + parse JSON
 
-- Rate-limiting pe endpoint-urile sensibile; input sanitization; CORS controlat.  
-- Token-uri scurte, refresh flow sigur; cookie flags (HttpOnly, SameSite).  
-- Secrete în `.env` (GitHub Actions → Environments; Vercel → Project Settings).
+optional validator runtime
 
----
+aruncă eroare automată pe HTTP non-OK
 
-## 9) Accessibility (A11y)
+pregătită pentru ApiError unificat (Bridge #2)
 
-- ARIA corect, structură de heading-uri, contrast WCAG AA.  
-- Focus management pentru dialogs; live regions pentru erori de validare.
+6) Frontend Dev UI (public/search.html)
 
----
+Live search
 
-## 10) Setup & Run
+Debounce 300ms
 
-```bash
-# 1) Clone repository
-git clone https://github.com/AndreiGabriel1/EventFlow.git
-cd EventFlow
+Intl.DateTimeFormat pentru date frumos formatate
 
-# 2) Setup environment variables
-cp .env.example .env.local
-# Edit: DATABASE_URL, NEXTAUTH_SECRET, etc.
+Status states:
 
-# 3) Install deps & start dev server
-pnpm install      # sau npm/yarn
-pnpm dev
-```
+„Se caută…”
 
----
+„Niciun eveniment găsit”
 
-## 11) Screenshots & Demo
+„Eroare HTTP”
 
-- Screenshots în `docs/screenshots/` (UI, event list, creation form, dashboard).  
-- Live demo (Vercel): _to be added after deployment_.
+„Eroare de rețea”
 
----
+UI-ul servește ca prototip pentru viitoarea versiune React (L3).
 
-## 12) Personal Contributions (Evidence)
+7) Development Evidence — Bridge #1
 
-- Design model de date și API contracts.  
-- Implementare front-end strict TypeScript (react-hook-form + zod).  
-- Optimizări de performanță (ISR, lazy loading, memoization).  
-- Setup CI pipeline (type-check, test, build, deploy).
+creat validatori runtime pentru Event & ApiResponse
 
----
+implementat typedFetch generic cu validation pipeline
 
-## 13) Roadmap
+creat API stabil + rute Express clare
 
-- Integrare **Stripe payments** (paid events).  
-- **QR-based check-in** (web + PWA).  
-- **Event analytics dashboard**.  
-- **CSV/Excel export & import**.
+integrat frontend de test + debounce logic
 
----
+test runners pentru verificare locală
 
-## 14) License & Contact
+pregătit ApiError (Bridge #2)
 
-- **License:** MIT  
-- **Author:** Andrei Gabriel — [LinkedIn](https://www.linkedin.com/in/andrei-gabriel-dinu-173240251/) · [GitHub](https://github.com/AndreiGabriel1)
+8) Roadmap (L2 → L3 → L4)
+L2 — Mâine:
 
+ApiError unified pipeline
 
-## 15) Implementation Evidence — L1 (Express + EJS + Vanilla JS)
+validare input la /search
 
-> **Current Stack (L1):** Node.js + Express + EJS + MongoDB + Vanilla JS (ES Modules)  
-> **Goal:** Core search, data rendering, and helper logic before migrating to TypeScript + React (L2).
+try/catch wrapper
 
-### 2025-11-07 — Public/JS/search.js Polish (LLBD)
-- Integrated helpers: `sumBy()` / `toDictBy()`.
-- Added result header (“Found X results”) + highlight (`hl()`).
-- Modularized client logic; prepared O(1) access via `byId`.
-- Files touched: `views/index.ejs`, `public/js/search.js`, `public/js/utils.js`.
-- Patterns introduced: aggregation (`sumBy`), dictionary mapping (`toDictBy`), text highlighting (`hl()`).
-- No API or UX regressions — console clean.
+small refactor + polish API
 
-### Next (planned)
-- Extend `/api/search` to return `{ id, name, description, score }` for real data integration.  
-- Add CSS rule for `mark` highlight (`padding: 0 2px;`).  
-- Prepare unit tests for `utils.js` (helper validation).
+L3:
 
----
+Migrare UI → React (TS + Vite/Next dev mode)
+
+State management (Zustand)
+
+typedFetch integrat în React Query
+
+L4:
+
+Migrare React → Next.js App Router
+
+File-based routing
+
+Server Actions
+
+Cache / revalidare
+
+L5 (post-hire):
+
+Înlocuire mock JSON → PostgreSQL + Prisma
+
+9) Personal Contributions (Evidence)
+
+Arhitectura completă a API-ului L1–L2
+
+Implementare TypeScript strict (guards + contracts)
+
+typedFetch generic + execuție safe runtime
+
+UI de test cu debounce + UX states
+
+Testare manuală + integration runner
+
+Pregătire structuri pentru migrare React/Next
+
+## 10) License & Contact
+
+**License:** MIT  
+
+**Author:** Andrei Gabriel  
+- **LinkedIn:** [linkedin.com/in/andrei-gabriel-dinu-173240251](https://www.linkedin.com/in/andrei-gabriel-dinu-173240251/)  
+- **GitHub:** [github.com/AndreiGabriel1](https://github.com/AndreiGabriel1)

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <title>EventFlow - Search Dev UI</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+      .search-bar {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      input[type="text"] {
+        flex: 1;
+        padding: 0.4rem 0.6rem;
+      }
+      button {
+        padding: 0.4rem 0.8rem;
+        cursor: pointer;
+      }
+      .status {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+      ul {
+        padding-left: 1.2rem;
+      }
+      li {
+        margin-bottom: 0.4rem;
+      }
+      .event-date {
+        font-size: 0.85rem;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>EventFlow - căutare evenimente</h1>
+
+    <div class="search-bar">
+      <input
+        id="q"
+        type="text"
+        placeholder="Caută după titlu sau locație (ex: demo, București)..."
+      />
+      <button id="btn">Caută</button>
+    </div>
+
+    <div class="status" id="status"></div>
+
+    <ul id="results"></ul>
+
+    <script>
+      const input = document.getElementById("q");
+      const button = document.getElementById("btn");
+      const statusEl = document.getElementById("status");
+      const resultsEl = document.getElementById("results");
+
+
+      function debounce(fn, delay) {
+        let timeoutId;
+        return (...args) => {
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => fn(...args), delay);
+        };
+      }
+
+      async function runSearch() {
+        const query = input.value.trim();
+
+        statusEl.textContent = "Se caută...";
+        resultsEl.innerHTML = "";
+
+        try {
+          const res = await fetch(
+            `/api/events/search?q=${encodeURIComponent(query)}`
+          );
+
+          if (!res.ok) {
+            statusEl.textContent = `Eroare HTTP: ${res.status}`;
+            return;
+          }
+
+          const data = await res.json(); 
+          if (!data.ok) {
+            statusEl.textContent = "API a răspuns cu ok=false.";
+            return;
+          }
+
+          const events = data.data;
+
+          if (!events.length) {
+            statusEl.textContent = "Niciun eveniment găsit.";
+            return;
+          }
+
+        const fallbackNote = data.isFallbackQuery ? " (fallback)" : "";
+            statusEl.textContent = `Găsite ${events.length} eveniment(e)${fallbackNote}.`;
+
+
+          for (const ev of events) {
+            const li = document.createElement("li");
+            const title = document.createElement("div");
+            const date = document.createElement("div");
+
+            title.textContent = ev.title;
+
+            const isoDate = new Date(ev.dateISO);
+            const pretty = new Intl.DateTimeFormat("ro-RO", {
+              dateStyle: "long",
+              timeStyle: "short",
+            }).format(isoDate);
+            date.textContent = pretty;
+            date.className = "event-date";
+
+            li.appendChild(title);
+            li.appendChild(date);
+            resultsEl.appendChild(li);
+          }
+        } catch (err) {
+          console.error(err);
+          statusEl.textContent = "Eroare de rețea sau server.";
+        }
+      }
+
+      const debouncedSearch = debounce(runSearch, 300);
+
+      button.addEventListener("click", runSearch);
+
+      input.addEventListener("input", () => {
+        debouncedSearch();
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        runSearch();
+      });
+    </script>
+
+  </body>
+</html>
