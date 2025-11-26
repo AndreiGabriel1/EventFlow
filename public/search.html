@@ -41,6 +41,96 @@
         font-size: 0.85rem;
         opacity: 0.7;
       }
+      .event-item {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.event-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.event-title {
+  font-weight: 600;
+}
+
+.event-meta {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border: 1px solid #ddd;
+}
+
+.badge-fallback {
+  background: #f5f5f5;
+}
+
+.badge-match-title {
+  background: #e8f5e9;
+}
+
+.badge-match-location {
+  background: #e3f2fd;
+}
+
+.badge-match-tag {
+  background: #fff8e1;
+}
+
+.event-tags {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 0.15rem;
+}
+
+.event-description {
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+    .details-card {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+}
+
+.details-title {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.details-meta {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 0.35rem;
+}
+
+.details-description {
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+
+.details-tags {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+
     </style>
   </head>
   <body>
@@ -59,12 +149,15 @@
 
     <ul id="results"></ul>
 
+    <div id="details"></div>
+
+
     <script>
       const input = document.getElementById("q");
       const button = document.getElementById("btn");
       const statusEl = document.getElementById("status");
       const resultsEl = document.getElementById("results");
-
+      const detailsEl = document.getElementById("details");
 
       function debounce(fn, delay) {
         let timeoutId;
@@ -79,6 +172,8 @@
 
         statusEl.textContent = "Se caută...";
         resultsEl.innerHTML = "";
+        detailsEl.innerHTML = "";
+
 
         try {
           const res = await fetch(
@@ -90,7 +185,8 @@
             return;
           }
 
-          const data = await res.json(); 
+          const data = await res.json();
+
           if (!data.ok) {
             statusEl.textContent = "API a răspuns cu ok=false.";
             return;
@@ -103,27 +199,87 @@
             return;
           }
 
-        const fallbackNote = data.isFallbackQuery ? " (fallback)" : "";
-            statusEl.textContent = `Găsite ${events.length} eveniment(e)${fallbackNote}.`;
+          const fallbackNote = data.isFallbackQuery ? " (fallback)" : "";
+          statusEl.textContent = `Găsite ${events.length} eveniment(e)${fallbackNote}.`;
 
+          const qLower = query.toLowerCase();
 
           for (const ev of events) {
             const li = document.createElement("li");
-            const title = document.createElement("div");
-            const date = document.createElement("div");
+            li.className = "event-item";
 
+            const header = document.createElement("div");
+            header.className = "event-header";
+
+            const title = document.createElement("div");
+            title.className = "event-title";
             title.textContent = ev.title;
+
+            const badge = document.createElement("span");
+            badge.className = "badge";
+
+            const titleText = ev.title?.toLowerCase() ?? "";
+            const locationText = (ev.location ?? "").toLowerCase();
+            const tags = (ev.tags ?? []).map((t) => t.toLowerCase());
+
+            if (!data.isFallbackQuery && qLower.length > 0) {
+              if (titleText.includes(qLower)) {
+                badge.textContent = "Titlu";
+                badge.classList.add("badge-match-title");
+              } else if (locationText.includes(qLower)) {
+                badge.textContent = "Locație";
+                badge.classList.add("badge-match-location");
+              } else if (tags.some((t) => t.includes(qLower))) {
+                badge.textContent = "Tag";
+                badge.classList.add("badge-match-tag");
+              } else {
+                badge.textContent = "Relevanță";
+              }
+            } else {
+              badge.textContent = "Fallback";
+              badge.classList.add("badge-fallback");
+            }
+
+            header.appendChild(title);
+            header.appendChild(badge);
+
+            const meta = document.createElement("div");
+            meta.className = "event-meta";
 
             const isoDate = new Date(ev.dateISO);
             const pretty = new Intl.DateTimeFormat("ro-RO", {
               dateStyle: "long",
               timeStyle: "short",
             }).format(isoDate);
-            date.textContent = pretty;
-            date.className = "event-date";
 
-            li.appendChild(title);
-            li.appendChild(date);
+            const locationPart = ev.location ? ` • ${ev.location}` : "";
+            meta.textContent = `${pretty}${locationPart}`;
+
+            const tagsLine = document.createElement("div");
+            tagsLine.className = "event-tags";
+            if (ev.tags && ev.tags.length > 0) {
+              tagsLine.textContent = `Tags: ${ev.tags.join(", ")}`;
+            }
+
+            const description = document.createElement("div");
+            description.className = "event-description";
+            if (ev.description) {
+                description.textContent = ev.description;
+            }
+
+            li.appendChild(header);
+            li.appendChild(meta);
+
+            if (tagsLine.textContent) {
+              li.appendChild(tagsLine);
+            }
+
+            li.style.cursor = "pointer";
+            li.addEventListener("click", () => {
+                showDetails(ev);
+            });
+
+
             resultsEl.appendChild(li);
           }
         } catch (err) {
@@ -132,10 +288,72 @@
         }
       }
 
+      async function showDetails(ev) {
+  detailsEl.innerHTML = "Se încarcă detaliile...";
+
+  try {
+    const res = await fetch(`/api/events/slug/${encodeURIComponent(ev.slug)}`);
+
+    if (!res.ok) {
+      detailsEl.textContent = `Eroare la detalii (HTTP ${res.status})`;
+      return;
+    }
+
+    const data = await res.json();
+    if (!data.ok || !data.data) {
+      detailsEl.textContent = "Nu am putut încărca detaliile evenimentului.";
+      return;
+    }
+
+    const event = data.data;
+    const isoDate = new Date(event.dateISO);
+    const pretty = new Intl.DateTimeFormat("ro-RO", {
+      dateStyle: "long",
+      timeStyle: "short",
+    }).format(isoDate);
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "details-card";
+
+    const title = document.createElement("div");
+    title.className = "details-title";
+    title.textContent = event.title;
+
+    const meta = document.createElement("div");
+    meta.className = "details-meta";
+    const locationPart = event.location ? ` • ${event.location}` : "";
+    meta.textContent = `${pretty}${locationPart}`;
+
+    const desc = document.createElement("div");
+    desc.className = "details-description";
+    desc.textContent =
+      event.description ??
+      "Acest eveniment nu are încă o descriere detaliată.";
+
+    const tagsLine = document.createElement("div");
+    tagsLine.className = "details-tags";
+    if (event.tags && event.tags.length > 0) {
+      tagsLine.textContent = `Tags: ${event.tags.join(", ")}`;
+    }
+
+    wrapper.appendChild(title);
+    wrapper.appendChild(meta);
+    wrapper.appendChild(desc);
+    if (tagsLine.textContent) {
+      wrapper.appendChild(tagsLine);
+    }
+
+    detailsEl.appendChild(wrapper);
+  } catch (err) {
+    console.error(err);
+    detailsEl.textContent = "Eroare de rețea la încărcarea detaliilor.";
+  }
+}
+
+
       const debouncedSearch = debounce(runSearch, 300);
 
       button.addEventListener("click", runSearch);
-
       input.addEventListener("input", () => {
         debouncedSearch();
       });
@@ -144,6 +362,7 @@
         runSearch();
       });
     </script>
+
 
   </body>
 </html>

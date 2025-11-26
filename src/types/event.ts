@@ -6,7 +6,11 @@ export interface Event {
   id: string;
   title: string;
   dateISO: ISODate;
-  location?: string; // optional field
+  location?: string;
+  slug?: string;
+  tags?: string[];
+  description?: string; 
+  relevance?: number; // AN: meta opțional, folosit doar la search
 }
 
 // Intent: unified error shape used by typedFetch and all API routes

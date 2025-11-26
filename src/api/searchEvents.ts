@@ -5,9 +5,6 @@ import {
   type Event,
 } from "../types/event";
 
-// AN-TODO: expect ApiError from backend when ok = false
-
-
 // AN: helper – caută evenimente după query text
 export async function searchEvents(
   query: string
