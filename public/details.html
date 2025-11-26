@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <title>EventFlow - Detalii eveniment</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 1rem;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .back-link {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        text-decoration: none;
+        opacity: 0.8;
+      }
+
+      .back-link:hover {
+        opacity: 1;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .details-card {
+        margin-top: 1rem;
+        padding: 0.9rem 1.2rem;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        background: #fafafa;
+      }
+
+      .details-title {
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+        font-size: 1.2rem;
+      }
+
+      .details-meta {
+        font-size: 0.9rem;
+        opacity: 0.85;
+        margin-bottom: 0.6rem;
+      }
+
+      .details-description {
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .details-tags {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+
+      .image-placeholder {
+        width: 100%;
+        height: 180px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .status {
+        font-size: 0.95rem;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/search.html" class="back-link">
+      <span>⬅</span>
+      <span>Înapoi la căutare</span>
+    </a>
+
+    <h1>Detalii eveniment</h1>
+
+    <div id="details" class="status">Se pregătește încărcarea...</div>
+
+    <script>
+      function getSlugFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("slug");
+      }
+
+      async function loadDetails() {
+        const detailsEl = document.getElementById("details");
+        const slug = getSlugFromUrl();
+
+        if (!slug) {
+          detailsEl.textContent = "Lipsește parametrul ?slug= din URL.";
+          return;
+        }
+
+        detailsEl.textContent = "Se încarcă detaliile evenimentului...";
+
+        try {
+          const res = await fetch(
+            `/api/events/slug/${encodeURIComponent(slug)}`
+          );
+
+          if (!res.ok) {
+            detailsEl.textContent = `Eroare HTTP la detalii: ${res.status}`;
+            return;
+          }
+
+          const data = await res.json();
+
+          if (!data.ok || !data.data) {
+            detailsEl.textContent = "Evenimentul nu a fost găsit.";
+            return;
+          }
+
+          const event = data.data;
+
+          const isoDate = new Date(event.dateISO);
+          const pretty = new Intl.DateTimeFormat("ro-RO", {
+            dateStyle: "long",
+            timeStyle: "short",
+          }).format(isoDate);
+
+          // golim containerul și construim cardul
+          detailsEl.innerHTML = "";
+          detailsEl.classList.remove("status");
+
+          const card = document.createElement("div");
+          card.className = "details-card";
+
+          const image = document.createElement("div");
+          image.className = "image-placeholder";
+          image.textContent = "Imagine eveniment (placeholder)";
+
+          const title = document.createElement("div");
+          title.className = "details-title";
+          title.textContent = event.title;
+
+          const meta = document.createElement("div");
+          meta.className = "details-meta";
+          const locationPart = event.location ? ` • ${event.location}` : "";
+          meta.textContent = `${pretty}${locationPart}`;
+
+          const desc = document.createElement("div");
+          desc.className = "details-description";
+          desc.textContent =
+            event.description ??
+            "Acest eveniment nu are încă o descriere detaliată.";
+
+          const tagsLine = document.createElement("div");
+          tagsLine.className = "details-tags";
+          if (event.tags && event.tags.length > 0) {
+            tagsLine.textContent = `Tags: ${event.tags.join(", ")}`;
+          }
+
+          card.appendChild(image);
+          card.appendChild(title);
+          card.appendChild(meta);
+          card.appendChild(desc);
+          if (tagsLine.textContent) {
+            card.appendChild(tagsLine);
+          }
+
+          detailsEl.appendChild(card);
+        } catch (err) {
+          console.error(err);
+          detailsEl.textContent =
+            "Eroare de rețea la încărcarea detaliilor evenimentului.";
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", loadDetails);
+    </script>
+  </body>
+</html>

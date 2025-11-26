@@ -276,7 +276,8 @@
 
             li.style.cursor = "pointer";
             li.addEventListener("click", () => {
-                showDetails(ev);
+               if (!ev.slug) return;
+               window.location.href = `/details.html?slug=${encodeURIComponent(ev.slug)}`;
             });
 
 
