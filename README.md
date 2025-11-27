@@ -54,7 +54,7 @@ src/
 
 ---
 
-## Architect’s Log (High-Level)
+## Architect’s Log 
 
 - The `Event` entity was treated as a stable contract so future extensions (categories, organizers, tickets, etc.) do not require API redesign.
 - The project is structured for smooth evolution: replacing the mock dataset with a database affects only the data layer, not the routing or API contract.
