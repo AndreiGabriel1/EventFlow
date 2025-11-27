@@ -53,7 +53,7 @@ public/
 
 ---
 
-## Architect’s Log (high-level)
+## Architect’s Log
 
 - `Event` este tratat ca entitate centrală, cu un contract stabil și predictibil — orice extindere (categorii, organizatori, bilete) se poate face fără refactor agresiv.
 - Structura proiectului permite migrarea dataset-ului in-memory către o bază de date reală modificând doar un singur layer.
