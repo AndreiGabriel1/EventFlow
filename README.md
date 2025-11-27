@@ -1,60 +1,62 @@
-# EventFlow — Sistem de gestionare evenimente
+# EventFlow — Event Management API (TypeScript + Express)
 
-EventFlow este o aplicație web modulară, construită cu TypeScript și Express, pentru gestionarea evenimentelor: listare, căutare, afișare detalii și identificare prin slug-uri. Arhitectura este clară, predictibilă și ușor de extins.
-
----
-
-## Funcționalități principale
-
-- Listare evenimente cu date consecvente (title, dateISO, location, tags)
-- Căutare cu relevanță (scoring) și fallback automat
-- Acces la evenimente atât prin `id`, cât și prin `slug`
-- Validări runtime cu type guards în TypeScript
-- Structură backend bine separată: `routes/`, `types/`, `utils/`, `public/`
-- Endpoint-uri API stabile, potrivite pentru UI clasic, SPA sau integrare externă
+EventFlow is a clean, lightweight API for listing, searching and retrieving event data.  
+The project is built with TypeScript and Express, following a modular, predictable structure that can easily scale into a real-world service.
 
 ---
 
-## Arhitectură și decizii tehnice
+## Features
 
-- Backend Express împărțit în module ușor de întreținut
-- Router dedicat pentru `/api/events` pentru izolare logică
-- Tipuri stricte (Event, ApiResponse) + guards pentru consistență
-- Sistem de slug-uri cu normalizare și sanitizare
-- Structură pregătită pentru migrare rapidă de la dataset in-memory la o bază de date reală
+- Consistent event model (`id`, `title`, `dateISO`, `location`, `tags`, `description`)
+- Search endpoint with relevance scoring and automatic fallback
+- Access events by both `id` and SEO-friendly `slug`
+- Strict runtime validation via TypeScript type guards
+- Clear backend structure: `routes/`, `types/`, `utils/`, `public/`
+- Stable API contract designed for frontend consumption or microservice integration
 
-### Structura principală
+---
+
+## Architecture & Technical Decisions
+
+- Express server written in TypeScript, split into small, maintainable modules
+- Dedicated router under `/api/events` for clear separation of concerns
+- Strong typing with custom interfaces (`Event`, `ApiResponse`) and guards for safe data handling
+- Slug generator with normalization and character sanitization
+- In-memory dataset meant to be swapped later with a real database
+
+### Project Structure
 
 ```
 src/
   routes/
   types/
   utils/
-public/
+  public/
 ```
 
 ---
 
-## Journal tehnic (rezumat)
+## Technical Journal (Summary)
 
-- API-ul este construit în jurul unui contract stabil `{ ok, data }` → util pentru interfețe diverse.
-- Căutarea folosește scoring de relevanță pentru rezultate ordonate intuitiv.
-- Tipurile, utilitarele și rutele sunt separate pentru lizibilitate și mentenanță ușoară.
-- Arhitectura permite schimbarea sursei de date fără impact asupra API-ului.
-- Interfața din `public/` testează API-ul rapid, fără framework suplimentar.
+- The API is built around a stable response format: `{ ok, data }`
+- Relevance scoring improves search results while keeping implementation minimal
+- Type guards ensure predictable shapes and safer development at scale
+- Routes are organized in a way that allows the data layer to be replaced without refactoring the API surface
+- Static HTML in `public/` provides a direct way to test the API without any frontend framework
 
 ---
 
-## Detalii suplimentare
+## Additional Details
 
 - Stack: **TypeScript**, **Node.js**, **Express**
-- Funcționează standalone sau ca micro-serviciu
-- Gândit pentru claritate, predictibilitate și extindere ulterioară
+- Works standalone or as part of a multi-service architecture
+- Focused on clarity, simplicity and extensibility
 
 ---
 
-## Architect’s Log
+## Architect’s Log (High-Level)
 
-- `Event` este tratat ca entitate centrală, cu un contract stabil și predictibil — orice extindere (categorii, organizatori, bilete) se poate face fără refactor agresiv.
-- Structura proiectului permite migrarea dataset-ului in-memory către o bază de date reală modificând doar un singur layer.
-- Sistemul de slug-uri și căutare este implementat minimal, dar servește ca punct de discuție pentru optimizări avansate: indexare, caching, relevanță, query tuning.
+- The `Event` entity was treated as a stable contract so future extensions (categories, organizers, tickets, etc.) do not require API redesign.
+- The project is structured for smooth evolution: replacing the mock dataset with a database affects only the data layer, not the routing or API contract.
+- Slug generation and search logic were intentionally kept minimal, serving as discussion points for indexation strategies, text relevance, caching and performance improvements.
+- All modules were separated with long-term maintainability in mind, keeping surface area small and predictable.
