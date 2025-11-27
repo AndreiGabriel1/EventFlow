@@ -1,7 +1,7 @@
 // AN: semantic alias – în API păstrăm datele ca ISO string
 export type ISODate = string;
 
-// Intent: shape for one event returned by the API
+// Intent: shape pentru un eveniment returnat de API
 export interface Event {
   id: string;
   title: string;
@@ -9,11 +9,12 @@ export interface Event {
   location?: string;
   slug?: string;
   tags?: string[];
-  description?: string; 
-  relevance?: number; // AN: meta opțional, folosit doar la search
+  description?: string;
+  // AN: meta opțional, folosit doar la search (nu face parte din modelul de bază)
+  relevance?: number;
 }
 
-// Intent: unified error shape used by typedFetch and all API routes
+// Intent: unified error shape folosit de typedFetch și toate rutele API
 export interface ApiError {
   message: string;
   code?: string;
@@ -25,35 +26,46 @@ export interface ApiResponse<T> {
   data: T;
 }
 
+// AN: type guard pentru un singur Event – runtime validation
+export function isEvent(x: unknown): x is Event {
+  if (!x || typeof x !== "object") return false;
 
-// AN: type guard for a single Event – runtime validation
-export function isEvent(x: any): x is Event {
-  return (
-    x &&
-    typeof x === "object" &&
-    typeof x.id === "string" &&
-    typeof x.title === "string" &&
-    typeof x.dateISO === "string" &&
-    (x.location === undefined || typeof x.location === "string")
-  );
+  const candidate = x as Event;
+
+  if (
+    typeof candidate.id !== "string" ||
+    typeof candidate.title !== "string" ||
+    typeof candidate.dateISO !== "string"
+  ) {
+    return false;
+  }
+
+  if (
+    candidate.location !== undefined &&
+    typeof candidate.location !== "string"
+  ) {
+    return false;
+  }
+
+  return true;
 }
 
-// AN: type guard for array of events
-export function isEventArray(x: any): x is Event[] {
+// AN: type guard pentru array de Event
+export function isEventArray(x: unknown): x is Event[] {
   return Array.isArray(x) && x.every(isEvent);
 }
 
-export function isApiResponseEventArray (
+// AN: type guard pentru ApiResponse<Event[]>
+export function isApiResponseEventArray(
   d: unknown
 ): d is ApiResponse<Event[]> {
-  if (
-    typeof d === "object" &&
-    d !== null &&
-    typeof (d as any).ok === "boolean" &&
-    Array.isArray((d as any).data) &&
-    isEventArray((d as any).data)
-  ) {
-    return true;
-  }
-  return false;
+  if (!d || typeof d !== "object") return false;
+
+  const candidate = d as ApiResponse<unknown>;
+
+  if (typeof candidate.ok !== "boolean") return false;
+  if (!Array.isArray(candidate.data)) return false;
+  if (!isEventArray(candidate.data)) return false;
+
+  return true;
 }

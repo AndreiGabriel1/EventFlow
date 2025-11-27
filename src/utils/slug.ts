@@ -1,12 +1,11 @@
-// AN: helper mic - generam slug-uri "safe" din titluri
-
+// AN: helper mic – generăm slug-uri "safe" din titluri
 export function generateSlug(input: string): string {
-    return input
+  return input
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
-    .toLocaleLowerCase()
+    .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9\s-]/g, "") 
-    .replace(/\s+/g, "-") 
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
     .replace(/-+/g, "-");
 }

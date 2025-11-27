@@ -2,7 +2,7 @@ import { Router } from "express";
 import type { Event, ApiResponse } from "../types/event";
 import { generateSlug } from "../utils/slug";
 
-const r = Router();
+const eventsRouter = Router();
 
 // Intent: small in-memory list of events used as mock data for the API
 const data: Event[] = [
@@ -38,7 +38,7 @@ const data: Event[] = [
 ];
 
 // AN: stable API contract – front-end știe că primește mereu { ok, data }
-r.get("/", (_req, res) => {
+eventsRouter.get("/", (_req, res) => {
   const response: ApiResponse<Event[]> = {
     ok: true,
     data,
@@ -47,7 +47,7 @@ r.get("/", (_req, res) => {
 });
 
 // AN: search simplu după titlu/lokație – case-insensitive
-r.get("/search", (req, res) => {
+eventsRouter.get("/search", (req, res) => {
   const q = String(req.query.q ?? "").trim().toLowerCase();
   const isFallback = q.length === 0;
 
@@ -91,7 +91,7 @@ r.get("/search", (req, res) => {
   });
 });
 
-r.get("/slug/:slug", (req, res) => {
+eventsRouter.get("/slug/:slug", (req, res) => {
   const slug = String(req.params.slug);
   const found = data.find((ev) => ev.slug === slug) ?? null;
 
@@ -111,9 +111,8 @@ r.get("/slug/:slug", (req, res) => {
   return res.json(response);
 });
 
-r.get("/:id", (req, res) => {
+eventsRouter.get("/:id", (req, res) => {
   const { id } = req.params;
-
   const event = data.find((ev) => ev.id === id) ?? null;
 
   if (!event) {
@@ -133,4 +132,4 @@ r.get("/:id", (req, res) => {
 });
 
 // Intent: exportăm un singur router care va fi montat în server.ts pe /api/events
-export default r;
+export default eventsRouter;
