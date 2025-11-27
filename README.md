@@ -1,48 +1,60 @@
 # EventFlow — Sistem de gestionare evenimente
 
-EventFlow este o aplicație web simplă și clar structurată pentru gestionarea evenimentelor: listare, căutare, afișare detalii și identificare prin slug-uri. Proiectul este construit cu TypeScript și Express, având o arhitectură modulară și ușor de extins.
+EventFlow este o aplicație web modulară, construită cu TypeScript și Express, pentru gestionarea evenimentelor: listare, căutare, afișare detalii și identificare prin slug-uri. Arhitectura este clară, predictibilă și ușor de extins.
+
+---
 
 ## Funcționalități principale
 
 - Listare evenimente cu date consecvente (title, dateISO, location, tags)
 - Căutare cu relevanță (scoring) și fallback automat
-- Acces la evenimente prin `id` și prin `slug`
-- Validări simple ale datelor cu type guards în TypeScript
-- Structură backend clară: `routes/`, `types/`, `utils/`, `public/`
-- Endpoint-uri API stabile, gândite pentru interfață front-end sau integrare ulterioară
+- Acces la evenimente atât prin `id`, cât și prin `slug`
+- Validări runtime cu type guards în TypeScript
+- Structură backend bine separată: `routes/`, `types/`, `utils/`, `public/`
+- Endpoint-uri API stabile, potrivite pentru UI clasic, SPA sau integrare externă
 
 ---
 
 ## Arhitectură și decizii tehnice
 
-- Server Express cu TypeScript, împărțit în module ușor de întreținut
-- Router dedicat pentru zona `/api/events` pentru izolare logică
-- TypeScript folosit pentru tipare stricte (Event, ApiResponse, guards)
-- Funcție utilitară pentru generarea slug-urilor, cu normalizare și sanitizare
-- Structură pregătită pentru integrare ulterioară cu o bază de date (înlocuirea dataset-ului in-memory)
+- Backend Express împărțit în module ușor de întreținut
+- Router dedicat pentru `/api/events` pentru izolare logică
+- Tipuri stricte (Event, ApiResponse) + guards pentru consistență
+- Sistem de slug-uri cu normalizare și sanitizare
+- Structură pregătită pentru migrare rapidă de la dataset in-memory la o bază de date reală
 
-Director principal:
+### Structura principală
+
+```
 src/
-routes/
-types/
-utils/
+  routes/
+  types/
+  utils/
 public/
-
+```
 
 ---
 
 ## Journal tehnic (rezumat)
 
-- Am implementat API-ul în jurul unui contract stabil: toate răspunsurile au forma `{ ok, data }`
-- Căutarea returnează un scor de relevanță pentru rezultate mai utile
-- Am separat clar tipurile, validările și utilitarele pentru a menține codul lizibil
-- Rutele sunt organizate astfel încât migrarea către o bază de date reală să fie simplă
-- Interfața statică din `public/` poate testa rapid API-ul fără nevoie de framework
+- API-ul este construit în jurul unui contract stabil `{ ok, data }` → util pentru interfețe diverse.
+- Căutarea folosește scoring de relevanță pentru rezultate ordonate intuitiv.
+- Tipurile, utilitarele și rutele sunt separate pentru lizibilitate și mentenanță ușoară.
+- Arhitectura permite schimbarea sursei de date fără impact asupra API-ului.
+- Interfața din `public/` testează API-ul rapid, fără framework suplimentar.
 
 ---
 
 ## Detalii suplimentare
 
-- Stack: TypeScript, Node.js, Express
-- Poate funcționa standalone sau ca micro-serviciu într-un sistem mai mare
-- Gândit pentru claritate, simplitate și extindere ulterioară
+- Stack: **TypeScript**, **Node.js**, **Express**
+- Funcționează standalone sau ca micro-serviciu
+- Gândit pentru claritate, predictibilitate și extindere ulterioară
+
+---
+
+## Architect’s Log (high-level)
+
+- `Event` este tratat ca entitate centrală, cu un contract stabil și predictibil — orice extindere (categorii, organizatori, bilete) se poate face fără refactor agresiv.
+- Structura proiectului permite migrarea dataset-ului in-memory către o bază de date reală modificând doar un singur layer.
+- Sistemul de slug-uri și căutare este implementat minimal, dar servește ca punct de discuție pentru optimizări avansate: indexare, caching, relevanță, query tuning.
