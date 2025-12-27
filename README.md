@@ -83,7 +83,7 @@ Notes
 
 ## Project structure
 
-```txt
+
 src/
   server.ts            Express bootstrap + router mount
   routes/events.ts     API routes and handlers (in-memory data)
