@@ -13,7 +13,7 @@ What was built
 - A dedicated router mounted under `/api/events`
 - A stable response envelope via `ApiResponse<T>`:
   - success: `{ ok: true, data: T }`
-  - not found: `{ ok: false, data: null }` (HTTP 404)
+  - failure: `{ ok: false, data: null }` (HTTP 404 / 400)
 
 Endpoints
 - `GET /api/events` — returns the full event list
@@ -77,7 +77,8 @@ Start (from build output):
 
 Notes
 - The server listens on `PORT` if provided, otherwise `3000`.
-- Static files in `public/` are served automatically (open `/index.html` in the browser).
+- Manual probe UI: `http://localhost:3000/index.html`
+
 
 ---
 
