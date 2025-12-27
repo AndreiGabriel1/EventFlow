@@ -14,12 +14,6 @@ export interface Event {
   relevance?: number;
 }
 
-// Intent: unified error shape folosit de typedFetch și toate rutele API
-export interface ApiError {
-  message: string;
-  code?: string;
-}
-
 // Generic API response shape
 export interface ApiResponse<T> {
   ok: boolean;

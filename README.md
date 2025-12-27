@@ -1,62 +1,100 @@
-# EventFlow — Event Management API (TypeScript + Express)
+# EventFlow
 
-EventFlow is a clean, lightweight API for listing, searching and retrieving event data.  
-The project is built with TypeScript and Express, following a modular, predictable structure that can easily scale into a real-world service.
-
----
-
-## Features
-
-- Consistent event model (`id`, `title`, `dateISO`, `location`, `tags`, `description`)
-- Search endpoint with relevance scoring and automatic fallback
-- Access events by both `id` and SEO-friendly `slug`
-- Strict runtime validation via TypeScript type guards
-- Clear backend structure: `routes/`, `types/`, `utils/`, `public/`
-- Stable API contract designed for frontend consumption or microservice integration
+EventFlow is a compact Event Management API built with TypeScript and Express.
+The scope is deliberately small: expose a stable events contract over an in-memory dataset, plus a minimal static UI for manual testing.
 
 ---
 
-## Architecture & Technical Decisions
+## Phase 1 - Contract + Routing (DONE)
 
-- Express server written in TypeScript, split into small, maintainable modules
-- Dedicated router under `/api/events` for clear separation of concerns
-- Strong typing with custom interfaces (`Event`, `ApiResponse`) and guards for safe data handling
-- Slug generator with normalization and character sanitization
-- In-memory dataset meant to be swapped later with a real database
+What was built
+- An Express server with JSON support
+- Static hosting for manual probe pages in `public/`
+- A dedicated router mounted under `/api/events`
+- A stable response envelope via `ApiResponse<T>`:
+  - success: `{ ok: true, data: T }`
+  - not found: `{ ok: false, data: null }` (HTTP 404)
 
-### Project Structure
+Endpoints
+- `GET /api/events` — returns the full event list
+- `GET /api/events/:id` — returns a single event by `id` (404 if missing)
+- `GET /api/events/slug/:slug` — returns a single event by `slug` (404 if missing)
 
-```
+---
+
+## Phase 2 - Deterministic Search (DONE)
+
+What was built
+- `GET /api/events/search?q=...`
+- Case-insensitive matching across:
+  - `title`
+  - `location` (optional)
+  - `tags` (optional)
+- Deterministic scoring (internal) + explicit fallback behavior:
+  - if `q` is empty, returns the full list
+  - includes `isFallbackQuery: true`
+
+Notes
+- Relevance is computed internally; the response returns the base `Event` model.
+
+---
+
+## Phase 3 - Manual Probe UI (DONE)
+
+What was built
+- `/index.html` — search UI
+- `/details.html?slug=...` — details page (loads via `/api/events/slug/:slug`)
+
+This UI is intentionally minimal and exists only to validate the API end-to-end without a framework.
+
+---
+
+## What this project does not do (intentional)
+
+- No database / persistence layer (in-memory data only)
+- No auth, roles, or multi-tenant concerns
+- No external services
+- No feature creep beyond the API surface and a probe UI
+
+---
+
+## How to run
+
+Install:
+- `npm install`
+
+Run dev server:
+- `npm run dev`
+
+Typecheck:
+- `npm run typecheck`
+
+Build:
+- `npm run build`
+
+Start (from build output):
+- `npm start`
+
+Notes
+- The server listens on `PORT` if provided, otherwise `3000`.
+- Static files in `public/` are served automatically (open `/index.html` in the browser).
+
+---
+
+## Project structure
+
+```txt
 src/
-  routes/
-  types/
-  utils/
-  public/
-```
+  server.ts            Express bootstrap + router mount
+  routes/events.ts     API routes and handlers (in-memory data)
+  types/event.ts       Event contract + ApiResponse<T> + runtime guards
+  utils/slug.ts        deterministic slug generation
+  utils/typedFetch.ts  generic fetch wrapper (optional runtime validation)
+public/
+  index.html           search UI
+  details.html         details page (slug-based)
 
----
+## Project Status
 
-## Technical Journal (Summary)
-
-- The API is built around a stable response format: `{ ok, data }`
-- Relevance scoring improves search results while keeping implementation minimal
-- Type guards ensure predictable shapes and safer development at scale
-- Routes are organized in a way that allows the data layer to be replaced without refactoring the API surface
-- Static HTML in `public/` provides a direct way to test the API without any frontend framework
-
----
-
-## Additional Details
-
-- Stack: **TypeScript**, **Node.js**, **Express**
-- Works standalone or as part of a multi-service architecture
-- Focused on clarity, simplicity and extensibility
-
----
-
-## Architect’s Log 
-
-- The `Event` entity was treated as a stable contract so future extensions (categories, organizers, tickets, etc.) do not require API redesign.
-- The project is structured for smooth evolution: replacing the mock dataset with a database affects only the data layer, not the routing or API contract.
-- Slug generation and search logic were intentionally kept minimal, serving as discussion points for indexation strategies, text relevance, caching and performance improvements.
-- All modules were separated with long-term maintainability in mind, keeping surface area small and predictable.
+This repository is intentionally scoped and designed for quick inspection.
+Future changes would be additive, without changing the API surface.

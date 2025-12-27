@@ -1,45 +1,21 @@
 {
   "name": "eventflow",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
-    "start": "node server.js",
-    "dev": " tsx src/server.ts",
-    "ts:check": "tsc --noEmit",
-    "build": "tsc"
+    "dev": "tsx src/server.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "connect-mongo": "^5.1.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.6.1",
-    "ejs": "^3.1.10",
-    "express": "^4.21.2",
-    "express-session": "^1.18.2",
-    "method-override": "^3.0.0",
-    "mongoose": "^8.19.1",
-    "passport": "^0.7.0",
-    "passport-local": "^1.0.0"
+    "express": "^4.21.2"
   },
-  "description": "**EventFlow** is a lightweight full-stack web app for planning and managing events — from meetups and workshops to private parties.  \r It demonstrates a clear, maintainable architecture with server-rendered views, form handling, and a modular data layer ready for database integration.",
-  "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AndreiGabriel1/EventFlow.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AndreiGabriel1/EventFlow/issues"
-  },
-  "homepage": "https://github.com/AndreiGabriel1/EventFlow#readme",
   "devDependencies": {
-    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
     "@types/node": "^24.10.1",
-    "nodemon": "^3.1.10",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
-  }
+  },
+  "license": "MIT"
 }
